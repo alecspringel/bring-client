@@ -3,20 +3,20 @@ import Increment from "./Increment";
 import "./demo.css";
 
 class Demo extends Component {
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  //   this.state = {
-  //     count: 0,
-  //   };
-  //   this.setCount = this.setCount.bind(this);
-  // }
+    this.state = {
+      count: 0,
+    };
+    this.setCount = this.setCount.bind(this);
+  }
 
-  // setCount() {
-  //   this.setState({
-  //     count: this.state.count + 1,
-  //   });
-  // }
+  setCount() {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  }
 
   render() {
     return (
