@@ -19,6 +19,7 @@ class Form extends Component {
         <Description/>
         <Inputs/>
         <SubmitButton/>
+        <hr></hr>
       </div>
     );
   }
