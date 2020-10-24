@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Description from "./Description";
 import Inputs from "./Inputs";
-import SubmitButton from "./SubmitButton";
 
 class Form extends Component {
   constructor(props) {
@@ -15,7 +14,6 @@ class Form extends Component {
       <div>
         <Description />
         <Inputs />
-        <SubmitButton />
         <hr></hr>
       </div>
     );

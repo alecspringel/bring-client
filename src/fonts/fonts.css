@@ -44,3 +44,12 @@
       format("svg"); /* Legacy iOS */
   font-display: swap;
 }
+
+/* coolvetica-regular - latin */
+@font-face {
+  font-family: "Coolvetica";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./coolvetica_rg-webfont.woff2") format("woff2");
+  font-display: swap;
+}

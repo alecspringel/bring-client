@@ -2,6 +2,7 @@
 :after,
 :before {
   box-sizing: border-box;
+  color: #5C5B5A;
 }
 
 body {
@@ -10,3 +11,136 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+input,
+textarea {
+  font-family: "Lato", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+}
+
+/* General class styles */
+.primary-bg {
+  background-color: #de472b;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  padding: 10px 12px;
+}
+
+.primary-btn {
+  background-color: #de472b;
+  color: #fff;
+  transition: all 100ms;
+}
+
+.primary-btn:hover {
+  background-color: #d1432a;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  color: #9D9D9D;
+}
+
+.text-black {
+  font-weight: 900;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-reg {
+  font-weight: 400;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.margin-tb10 {
+  margin: 10px 0 10px 0;
+}
+
+.margin-tb20 {
+  margin: 20px 0 20px 0;
+}
+
+.margin-t10 {
+  margin-top: 10px;
+}
+
+.margin-t20 {
+  margin-top: 20px;
+}
+
+.margin-b10 {
+  margin-bottom: 10px;
+}
+
+.margin-b20 {
+  margin-bottom: 20px;
+}
+
+/* Bring Website Media Queries */
+/* @media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+} */
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+/* ------------------------ */

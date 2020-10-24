@@ -1,0 +1,44 @@
+/* The following header styles have been separated into
+their own style sheet because they rely heavily on
+media queries */
+
+.bring-logo {
+  width: 540px;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+.nav-list {
+  justify-content: space-between;
+}
+
+/* copied from BRING recycling website */
+@media (max-width: 576px) {
+  .desktop-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+  .mobile-nav {
+    display: flex;
+  }
+
+  .bring-logo {
+    width: 275px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bring-logo {
+    width: 365px;
+  }
+}
+
+@media (min-width: 992px) {
+  .bring-logo {
+    width: 450px;
+  }
+}
