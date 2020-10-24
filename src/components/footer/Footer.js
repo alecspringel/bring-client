@@ -42,7 +42,6 @@ const Foot = styled.div`
   background-color: #de472b;
   width: 100%;
   padding: 40px 0;
-  position: absolute;
-  bottom: 0;
+
 
 `;

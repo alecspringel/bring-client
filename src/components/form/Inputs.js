@@ -4,7 +4,6 @@ import Checkbox from "../general/Checkbox";
 import TextInput from "../general/TextInput";
 import PhotoUpload from "./PhotoUpload";
 import SubmitButton from "./SubmitButton";
-// I imagine these should be split into separate components?
 
 class Inputs extends Component {
   render() {

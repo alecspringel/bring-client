@@ -6,7 +6,7 @@ import styled from "styled-components";
 import Footer from "./components/footer/Footer";
 import Form from "./components/form/Form";
 import Header from "./components/header/Header";
-import AdminPortal from "./components/adminPortal/AdminPortal";
+import AdminPortal from "./components/AdminPortal/AdminPortal";
 
 function App() {
   return (
