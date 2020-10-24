@@ -44,6 +44,7 @@
       format("svg"); /* Legacy iOS */
   font-display: swap;
 }
+
 /* coolvetica-regular - latin */
 @font-face {
   font-family: "Coolvetica";
