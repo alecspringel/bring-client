@@ -28,7 +28,7 @@ class PhotoUpload extends Component {
           style={{ marginBottom: 15 }}
         />
         <TextArea
-          placeholder="Description"
+          placeholder="Description (optional)"
           type="text"
           rows="3"
           style={{ marginBottom: 15 }}
