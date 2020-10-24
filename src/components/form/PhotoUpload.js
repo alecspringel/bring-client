@@ -28,8 +28,8 @@ class PhotoUpload extends Component {
           </div>
         </Background>
         <TextInput
-          name="item"
-          value={this.props.item}
+          name="itemName"
+          value={this.props.itemName}
           onChange={this.props.handleChange}
           className="margin-t20"
           placeholder="Item Names"

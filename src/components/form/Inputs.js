@@ -15,7 +15,7 @@ class Inputs extends Component {
       last: "",
       email: "",
       phone: "",
-      item: "",
+      itemName: "",
       description: "",
       preferEmail: false,
       preferPhone: false,
@@ -56,6 +56,8 @@ class Inputs extends Component {
           <PhotoUpload
             handleChange={this.handleChange}
             handleFiles={this.handleFiles}
+            itemName={this.state.itemName}
+            description={this.state.description}
           />
         </ImageSection>
         <FormSection>
@@ -128,12 +130,11 @@ class Inputs extends Component {
             last={this.state.last}
             email={this.state.email}
             phone={this.state.phone}
-            item={this.state.item}
+            itemName={this.state.itemName}
             description={this.state.description}
             preferEmail={this.state.preferEmail}
             preferPhone={this.state.preferPhone}
           />
-          <br></br>
         </FormSection>
       </FormWrapper>
     );
