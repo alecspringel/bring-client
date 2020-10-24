@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import Description from "./Description";
 import Inputs from "./Inputs";
 

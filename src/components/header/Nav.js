@@ -7,33 +7,33 @@ const Nav = () => {
       <Navigation>
         <div className="container">
           <ul className="nav-list flex-row">
-            <li>
-              <a>shop</a>
-            </li>
-            <li>
-              <a>business services</a>
-            </li>
-            <li>
-              <a>learn</a>
-            </li>
-            <li>
-              <a>news &amp; ideas</a>
-            </li>
-            <li>
-              <a>product stewardship</a>
-            </li>
-            <li>
-              <a>resources</a>
-            </li>
-            <li>
-              <a>donate</a>
-            </li>
-            <li>
-              <a>aboute BRING</a>
-            </li>
-            <li>
-              <a>contact</a>
-            </li>
+            <NavItem>
+              <a href="https://bringrecycling.org/shop/">shop</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/services/">business services</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/learn/">learn</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/news-and-ideas/">news &amp; ideas</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/product-stewardship/">product stewardship</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/resources/">resources</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/donate/">donate</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/about/">aboute BRING</a>
+            </NavItem>
+            <NavItem>
+              <a href="https://bringrecycling.org/contact/">contact</a>
+            </NavItem>
           </ul>
         </div>
       </Navigation>
@@ -54,12 +54,15 @@ const Navigation = styled.nav`
 
 const NavItem = styled.li`
   padding: 8px;
-  font-family: "Coolvetica";
-  font-size: 18.88px;
   margin: 0 10px;
   text-align: center;
 
   &:first-child:last-child {
     margin: 0;
+  }
+
+  a {
+    font-family: "Coolvetica";
+    font-size: 18.88px;
   }
 `;
