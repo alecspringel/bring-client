@@ -1,11 +1,10 @@
 import React, { Component } from "react";
+import Button from "../general/Button";
 
 class SubmitButton extends Component {
   render() {
     return (
-      <section class="submission">
-      <input type="submit" value="Submit"/>
-    </section>
+      <Button className="button primary-btn" label="SUBMIT" width="100%"/>
     );
   }
 }
