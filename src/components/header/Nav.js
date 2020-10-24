@@ -29,7 +29,7 @@ const Nav = () => {
               <a href="https://bringrecycling.org/donate/">donate</a>
             </NavItem>
             <NavItem>
-              <a href="https://bringrecycling.org/about/">aboute BRING</a>
+              <a href="https://bringrecycling.org/about/">about BRING</a>
             </NavItem>
             <NavItem>
               <a href="https://bringrecycling.org/contact/">contact</a>

@@ -10,11 +10,13 @@ class Header extends Component {
       <>
         <header className="primary-bg">
           <HeaderContent className="container flex-row">
+            <a href="https://bringrecycling.org">
             <img
               className="bring-logo"
               src={BringLogo}
               alt="BRING Recycling logo"
             />
+            </a>
           </HeaderContent>
         </header>
         <Nav />
