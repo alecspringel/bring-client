@@ -68,6 +68,19 @@ a {
   background-color: #d1432a;
 }
 
+.coolvetica {
+  font-family: "Coolvetica";
+  font-weight: 400;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.text-white {
+  color: #fff;
+}
+
 .text-center {
   text-align: center;
 }

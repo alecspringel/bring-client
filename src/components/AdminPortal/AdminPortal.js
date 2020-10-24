@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "./Header";
 import SubmissionTile from "./SubmissionTile";
 
 class AdminPortal extends Component {
@@ -13,7 +12,6 @@ class AdminPortal extends Component {
   render() {
     return (
       <div>
-        <Header/>
         <SubmissionTile/>
         <SubmissionTile/>
         <SubmissionTile/>
