@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SubmissionTile from "./SubmissionTile";
+import SubmissionFocusTile from "./SubmissionFocusTile";
 
 class AdminPortal extends Component {
   constructor(props) {
@@ -12,9 +13,10 @@ class AdminPortal extends Component {
   render() {
     return (
       <div>
+        <h1>These are some unclicked tiles</h1>
         <SubmissionTile/>
         <SubmissionTile/>
-        <SubmissionTile/>
+        <SubmissionFocusTile/>
         <hr></hr>
       </div>
     );
