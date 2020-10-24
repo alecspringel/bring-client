@@ -21,6 +21,12 @@ p {
   margin: 0;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -30,6 +36,10 @@ p {
 }
 
 /* General class styles */
+.primary-bg {
+  background-color: #de472b;
+}
+
 .flex-row {
   display: flex;
 }
@@ -64,15 +74,15 @@ p {
 }
 
 /* Bring Website Media Queries */
-@media (min-width: 576px) {
+/* @media (min-width: 576px) {
   .container {
     max-width: 540px;
   }
-}
+} */
 
 @media (min-width: 768px) {
   .container {
-    max-width: 720px;
+    margin: ;
   }
 }
 
