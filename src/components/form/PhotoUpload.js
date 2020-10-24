@@ -10,7 +10,12 @@ class PhotoUpload extends Component {
     return (
       <>
         <Background>
-          <InvisibleFile type="file" name="files" multiple />
+          <InvisibleFile
+            type="file"
+            name="files"
+            multiple
+            onChange={this.props.handleFiles}
+          />
           <div className="text-center">
             <Icon src={ImgIcon} />
             <h3 style={{ color: "#000", marginBottom: 5 }}>Upload Images</h3>
@@ -23,11 +28,17 @@ class PhotoUpload extends Component {
           </div>
         </Background>
         <TextInput
+          name="itemName"
+          value={this.props.itemName}
+          onChange={this.props.handleChange}
           className="margin-t20"
           placeholder="Item Names"
           style={{ marginBottom: 15 }}
         />
         <TextArea
+          name="description"
+          value={this.props.description}
+          onChange={this.props.handleChange}
           placeholder="Description (optional)"
           type="text"
           rows="3"

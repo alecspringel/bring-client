@@ -6,31 +6,84 @@ import PhotoUpload from "./PhotoUpload";
 import SubmitButton from "./SubmitButton";
 
 class Inputs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      files: null,
+      first: "",
+      last: "",
+      email: "",
+      phone: "",
+      itemName: "",
+      description: "",
+      preferEmail: false,
+      preferPhone: false,
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleFiles = this.handleFiles.bind(this);
+  }
+
+  // Handles changes from input fields
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+    console.log(this.state)
+  }
+
+  // Handles changes from checkbox fields
+  // These are booleans, so clicking should be ! of current value
+  handleCheckbox(e) {
+    this.setState({
+      [e.target.getAttribute("name")]: !this.state[
+        e.target.getAttribute("name")
+      ],
+    });
+  }
+
+  handleFiles(e) {
+    this.setState({
+      files: e.target.files,
+    });
+  }
+
   render() {
     return (
-      <Wrapper className="flex-row">
+      <FormWrapper className="flex-row">
         <ImageSection>
-          <PhotoUpload />
+          <PhotoUpload
+            handleChange={this.handleChange}
+            handleFiles={this.handleFiles}
+            itemName={this.state.itemName}
+            description={this.state.description}
+          />
         </ImageSection>
         <FormSection>
           <h3 className="text-black">Donation Approval</h3>
           <h4 className="text-light margin-tb10">Contact Information</h4>
           <TextInput
             style={{ marginBottom: 15 }}
+            value={this.state.first}
+            onChange={this.handleChange}
             type="text"
-            name="first name"
+            name="first"
             placeholder="First Name"
             required
           />
           <TextInput
             style={{ marginBottom: 15 }}
+            value={this.state.last}
+            onChange={this.handleChange}
             type="text"
-            name="last name"
+            name="last"
             placeholder="Last Name"
             required
           />
           <TextInput
             style={{ marginBottom: 15 }}
+            value={this.state.email}
+            onChange={this.handleChange}
             type="email"
             name="email"
             placeholder="Email"
@@ -38,33 +91,58 @@ class Inputs extends Component {
           />
           <TextInput
             style={{ marginBottom: 15 }}
+            value={this.state.phone}
+            onChange={this.handleChange}
             type="tel"
-            name="phone-number"
+            name="phone"
             placeholder="Phone Number"
             required
           />
           <h4 className="text-light margin-t10 margin-b10">
             Preferred Contact
           </h4>
-          <CheckboxDiv className="flex-row margin-b20">
+          <CheckboxDiv className="flex-row margin-b20 noselect">
             <div className="flex-row">
-              <Checkbox isChecked={true} /> <span style={{marginLeft: 7}}>Email</span>
+              <Checkbox
+                isChecked={this.state.preferEmail}
+                name="preferEmail"
+                onClick={this.handleCheckbox}
+              />{" "}
+              <span className="noselect" style={{ marginLeft: 7 }}>
+                Email
+              </span>
             </div>
             <div className="flex-row">
-              <Checkbox isChecked={false} /> <span style={{marginLeft: 7}}>Text</span>
+              <Checkbox
+                isChecked={this.state.preferPhone}
+                name="preferPhone"
+                onClick={this.handleCheckbox}
+              />{" "}
+              <span className="noselect" style={{ marginLeft: 7 }}>
+                Text
+              </span>
             </div>
           </CheckboxDiv>
-          <SubmitButton/>
-          <br></br>
+          <SubmitButton 
+            files={this.state.files}
+            first={this.state.first}
+            last={this.state.last}
+            email={this.state.email}
+            phone={this.state.phone}
+            itemName={this.state.itemName}
+            description={this.state.description}
+            preferEmail={this.state.preferEmail}
+            preferPhone={this.state.preferPhone}
+          />
         </FormSection>
-      </Wrapper>
+      </FormWrapper>
     );
   }
 }
 
 export default Inputs;
 
-const Wrapper = styled.div`
+const FormWrapper = styled.form`
   justify-content: space-between;
 `;
 

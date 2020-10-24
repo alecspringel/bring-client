@@ -5,8 +5,8 @@ import styled, { css } from "styled-components";
 const Checkbox = (props) => {
   return (
     <Box isChecked={props.isChecked} {...props}>
-      <Icon viewBox="0 0 24 24">
-        <polyline points="20 6 9 17 4 12" />
+      <Icon viewBox="0 0 24 24" {...props}>
+        <polyline points="20 6 9 17 4 12" {...props}/>
       </Icon>
     </Box>
   );
@@ -22,6 +22,7 @@ const Icon = styled.svg`
 `;
 
 const Box = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
   border: 1px solid #c1c1c1;
