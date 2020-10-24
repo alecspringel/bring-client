@@ -1,0 +1,26 @@
+.bring-header {
+  background-color: #de472b;
+}
+
+.bring-logo {
+  width: 540px;
+}
+
+/* copied from BRING recycling website */
+@media (min-width: 576px) {
+  .bring-logo {
+    width: 275px;
+  }
+}
+
+@media (min-width: 768px) {
+  .bring-logo {
+    width: 365px;
+  }
+}
+
+@media (min-width: 992px) {
+  .bring-logo {
+    width: 450px;
+  }
+}
