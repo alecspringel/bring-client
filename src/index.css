@@ -27,6 +27,10 @@ p {
   margin: 0;
 }
 
+.h3-large {
+  font-size: 21.5px;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
