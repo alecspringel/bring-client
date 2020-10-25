@@ -4,7 +4,6 @@ import ImageGallery from "../general/ImageGallery";
 import TextInput from "../general/TextInput";
 import TextArea from "../general/TextArea";
 import ImgIcon from "../../assets/img-icon.svg";
-import Button from "../general/Button";
 
 class PhotoUpload extends Component {
   render() {

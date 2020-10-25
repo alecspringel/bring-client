@@ -36,7 +36,10 @@ class SubmitButton extends Component {
         'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
       }
     }
-    return await post(url + endpoint, formData, config)
+    await post(url + endpoint, formData, config).then((res) => {
+      console.log(res);
+      this.props.toggleSuccess()
+    })
   }
 
   render() {

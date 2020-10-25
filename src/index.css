@@ -87,6 +87,7 @@ a {
   border: none;
   font-size: 16px;
   padding: 10px 12px;
+  font-family: "Lato", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
   -khtml-user-select: none; /* Konqueror HTML */
@@ -114,6 +115,15 @@ a {
 
 .green-btn:hover {
   background-color: #019b91;
+}
+
+.grey-btn {
+  background-color:#e7e7e7;
+  transition: all 100ms;
+}
+
+.grey-btn:hover {
+  background-color: #dddddd;
 }
 
 .coolvetica {

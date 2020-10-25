@@ -2,10 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = (props) => {
   return (
     <Foot>
-      <div className="container flex-row" style={{justifyContent: 'space-between'}}>
+      <div
+        className="container flex-row"
+        style={{ justifyContent: "space-between" }}
+      >
         <h3 className="coolvetica text-white">
           BRING
           <br />
@@ -28,8 +31,23 @@ const Footer = () => {
           <br />
         </h3>
         <h3>
-          <Link to="/" className="coolvetica text-white underline">donate</Link><br/>
-          <Link to="/admin" className="coolvetica text-white underline">admin login</Link>
+          <Link to="/" className="coolvetica text-white underline">
+            donate
+          </Link>
+          <br />
+          <Link to="/admin" className="coolvetica text-white underline">
+            admin login
+          </Link>
+          <br />
+          {props.auth && (
+            <span
+              className="coolvetica text-white underline"
+              onClick={props.signOut}
+              style={{ cursor: "pointer" }}
+            >
+              sign out
+            </span>
+          )}
         </h3>
       </div>
     </Foot>
