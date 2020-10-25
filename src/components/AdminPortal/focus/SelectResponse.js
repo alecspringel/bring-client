@@ -59,13 +59,13 @@ class SelectResponse extends Component {
     return (
       <>
         {responseType === "YES" && (
-          <YesBtn className="margin-b10" style={{ cursor: "default" }} />
+          <YesBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"yes"}/>
         )}
         {responseType === "MAYBE" && (
-          <MaybeBtn className="margin-b10" style={{ cursor: "default" }} />
+          <MaybeBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"maybe"}/>
         )}
         {responseType === "NO" && (
-          <NoBtn className="margin-b10" style={{ cursor: "default" }} />
+          <NoBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"no"}/>
         )}
 
         <h2>
