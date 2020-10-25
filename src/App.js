@@ -14,12 +14,12 @@ import PrivateRoute from "./components/PrivateRoute";
 class App extends Component {
   constructor(props) {
     super(props);
-
     var auth = false;
-    if(localStorage.getItem("bringToken")) {
+    const token = localStorage.getItem("bringToken");
+    if(token) {
       auth = true;
+      setAuthToken(token);
     }
-
     this.state = {
       auth,
     }

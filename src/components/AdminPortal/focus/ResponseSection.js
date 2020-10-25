@@ -7,7 +7,7 @@ class ResponseSection extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //"yes", "no", "maybe"
+      //"YES", "NO", "MAYBE"
       responseType: null,
     };
     this.setType = this.setType.bind(this);
@@ -22,13 +22,18 @@ class ResponseSection extends Component {
 
   render() {
     // Going to include this to make props easy to find/explicit
-    const { donation } = this.props;
+    const { donation, nextSubmission } = this.props;
 
     return (
       <Section>
         {this.state.responseType && (
           <Animation2 className="flex-col">
-            <SelectResponse donation={donation} responseType={this.state.responseType}/>
+            <SelectResponse
+              donation={donation}
+              responseType={this.state.responseType}
+              nextSubmission={nextSubmission}
+              setType={this.setType}
+            />
           </Animation2>
         )}
         <Animation1 animate={this.state.responseType}>

@@ -23,7 +23,7 @@ class SubmissionTile extends Component {
   render() {
     const createdDate = new Date(this.props.donation.createdDate);
     return (
-      <Tile className="flex-row" onClick={() => this.props.focusTile(this.props.donation)}>
+      <Tile className="flex-row" onClick={() => this.props.focusTile(this.props.donation, this.props.index)}>
         <DateCorner className="text-reg">
           {shortMonth(createdDate) + " " + createdDate.getDate()}
         </DateCorner>

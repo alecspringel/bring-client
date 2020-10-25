@@ -11,10 +11,12 @@ class DonationFeed extends Component {
     this.state = {
       donations: [],
       focusDonation: null,
+      focusIndex: null,
       loading: true,
     };
     this.fetchPendingDonations = this.fetchPendingDonations.bind(this);
     this.focusTile = this.focusTile.bind(this);
+    this.nextSubmission = this.nextSubmission.bind(this);
   }
 
   componentDidMount() {
@@ -25,31 +27,66 @@ class DonationFeed extends Component {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/unresolved";
     axios.get(url + endpoint).then((donations) => {
-      this.setState({ donations: donations.data, loading: false }, console.log(donations));
+      this.setState(
+        { donations: donations.data, loading: false },
+        console.log(donations)
+      );
     });
   }
 
-  focusTile(donation) {
+  focusTile(donation, index) {
     this.setState({
       focusDonation: donation,
+      focusIndex: index,
     });
+  }
+
+  nextSubmission() {
+    var donations = this.state.donations;
+    var focusIndex = null;
+    console.log(this.state)
+    donations.splice(this.state.focusIndex, 1);
+    // Reached the last in list
+    if (this.state.focusIndex !== donations.length + 1) {
+      focusIndex = focusIndex + 1;
+    }
+    this.setState({
+      donations,
+      focusIndex,
+      focusDonation: donations[focusIndex]
+    }, console.log(this.state));
   }
 
   render() {
     return (
-      <div style={{marginBottom: 60}}>
-        {this.state.focusDonation && <SubmissionFocus donation={this.state.focusDonation} close={() => this.focusTile(null)}/>}
+      <div style={{ marginBottom: 60 }}>
+        {this.state.focusDonation && (
+          <SubmissionFocus
+            donation={this.state.focusDonation}
+            close={() => this.focusTile(null)}
+            nextSubmission={this.nextSubmission}
+          />
+        )}
         <h2 className="text-bold">Pending Donations</h2>
         {this.state.donations &&
-          this.state.donations.map((donation) => (
-            <SubmissionTile donation={donation} focusTile={this.focusTile} />
+          this.state.donations.map((donation, index) => (
+            <SubmissionTile
+              donation={donation}
+              focusTile={this.focusTile}
+              index={index}
+              key={index}
+            />
           ))}
-        {this.state.donations.length === 0 && !this.state.loading &&
+        {this.state.donations.length === 0 && !this.state.loading && (
           <NoPendingMsg className="flex-col">
-            <img src={LogoImg} style={{height: 60}} alt="BRING hand icon logo"/>
+            <img
+              src={LogoImg}
+              style={{ height: 60 }}
+              alt="BRING hand icon logo"
+            />
             <h1 className="text-reg text-light">You're all caught up!</h1>
           </NoPendingMsg>
-        }
+        )}
       </div>
     );
   }
@@ -61,4 +98,4 @@ const NoPendingMsg = styled.div`
   height: 40vh;
   align-items: center;
   justify-content: center;
-`
+`;

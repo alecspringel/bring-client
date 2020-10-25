@@ -23,8 +23,9 @@ class SendMessageBtn extends Component {
     //Send post with axios
     post(url + endpoint, data)
     .then(function (response) {
-      console.log(response);
-    })
+      this.props.setType(null)
+      this.props.nextSubmission()
+    }.bind(this))
     .catch(function (error) {
       console.log(error);
     });

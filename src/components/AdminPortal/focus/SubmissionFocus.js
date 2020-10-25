@@ -16,7 +16,7 @@ class SubmissionFocus extends Component {
           <ImageContainer>
             <ImageGallery images={this.props.donation.imageUrls} />
           </ImageContainer>
-          <ResponseSection donation={this.props.donation}/>
+          <ResponseSection donation={this.props.donation} nextSubmission={this.props.nextSubmission}/>
         </Content>
       </Background>
     );

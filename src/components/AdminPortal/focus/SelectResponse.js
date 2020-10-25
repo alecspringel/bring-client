@@ -54,7 +54,7 @@ class SelectResponse extends Component {
   }
 
   render() {
-    const { donation, responseType } = this.props;
+    const { donation, responseType, nextSubmission, setType } = this.props;
 
     return (
       <>
@@ -89,13 +89,15 @@ class SelectResponse extends Component {
               : this.state.message
           }
           value={this.state.message}
-          onChange={this.state.shortMsg === "Custom" && this.handleCustom}
+          onChange={this.state.shortMsg === "Custom" ? this.handleCustom : () => {}}
           typable={this.state.shortMsg === "Custom"}
         />
         <SendMessageBtn
           donation={donation}
           responseType={responseType}
           message={this.state.message}
+          nextSubmission={nextSubmission}
+          setType={setType}
         />
       </>
     );
