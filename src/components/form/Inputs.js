@@ -53,6 +53,7 @@ class Inputs extends Component {
       <FormWrapper className="flex-row">
         <ImageSection>
           <PhotoUpload
+            files={this.state.files}
             handleChange={this.handleChange}
             handleFiles={this.handleFiles}
             itemName={this.state.itemName}
