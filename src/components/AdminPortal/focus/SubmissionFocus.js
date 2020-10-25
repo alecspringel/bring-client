@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ImageGallery from "../../general/ImageGallery";
 import ResponseSection from "./ResponseSection";
 
 class SubmissionFocus extends Component {
@@ -13,7 +14,7 @@ class SubmissionFocus extends Component {
         )}
         <Content className="container" onClick={(e) => e.stopPropagation()}>
           <ImageContainer>
-            <Image src={this.props.donation.imageUrls[0]} />
+            <ImageGallery images={this.props.donation.imageUrls} />
           </ImageContainer>
           <ResponseSection donation={this.props.donation}/>
         </Content>
@@ -54,6 +55,10 @@ const Content = styled.div`
   padding: 0;
   display: flex;
   overflow: hidden;
+  height: 620px;
+  @media (max-height: 690px) {
+    height: 520px;
+  }
 `;
 
 const ImageContainer = styled.div`

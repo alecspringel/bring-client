@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import ImageGallery from "../general/ImageGallery";
 import TextInput from "../general/TextInput";
 import TextArea from "../general/TextArea";
 import ImgIcon from "../../assets/img-icon.svg";
@@ -7,6 +8,24 @@ import Button from "../general/Button";
 
 class PhotoUpload extends Component {
   render() {
+    const {
+      files,
+      handleFiles,
+      handleChange,
+      itemName,
+      description,
+    } = this.props;
+
+    // Displayed in gallery
+    var images = [];
+
+    if (files) {
+      Array.from(files).forEach((file) => {
+        const url = URL.createObjectURL(file);
+        images.push(url);
+      });
+    }
+
     return (
       <>
         <Background>
@@ -14,31 +33,37 @@ class PhotoUpload extends Component {
             type="file"
             name="files"
             multiple
-            onChange={this.props.handleFiles}
+            onChange={handleFiles}
           />
-          <div className="text-center">
-            <Icon src={ImgIcon} />
-            <h3 style={{ color: "#000", marginBottom: 5 }}>Upload Images</h3>
-            <p>Select up to 5 images for us to review</p>
-            <Button
-              className="button margin-t10"
-              style={{ background: "#fff", padding: 7 }}
-              label="Choose Files"
-            />
-          </div>
+          {images.length === 0 ? (
+            <div className="text-center">
+              <Icon src={ImgIcon} />
+              <h3 style={{ color: "#000", marginBottom: 5 }}>Upload Images</h3>
+              <p>Select up to 5 images for us to review</p>
+              <UploadBtn
+                className="button margin-t20"
+              >
+                Choose Files
+              </UploadBtn>
+            </div>
+          ) : (
+            <PhotoWrapper className="text-center">
+              <ImageGallery images={images} />
+            </PhotoWrapper>
+          )}
         </Background>
         <TextInput
           name="itemName"
-          value={this.props.itemName}
-          onChange={this.props.handleChange}
+          value={itemName}
+          onChange={handleChange}
           className="margin-t20"
           placeholder="Item Names"
           style={{ marginBottom: 15 }}
         />
         <TextArea
           name="description"
-          value={this.props.description}
-          onChange={this.props.handleChange}
+          value={description}
+          onChange={handleChange}
           placeholder="Description (optional)"
           type="text"
           rows="3"
@@ -71,4 +96,15 @@ const InvisibleFile = styled.input`
   position: absolute;
   width: 100%;
   height: 100%;
+`;
+
+const PhotoWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const UploadBtn = styled.div`
+  box-shadow: 0px 0px 2px #00000054;
+  background: #fff;
+  padding: 7px;
 `;
