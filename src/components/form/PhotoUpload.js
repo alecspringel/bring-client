@@ -57,8 +57,9 @@ class PhotoUpload extends Component {
           value={itemName}
           onChange={handleChange}
           className="margin-t20"
-          placeholder="Item Names"
+          placeholder="Item Name"
           style={{ marginBottom: 15 }}
+          required
         />
         <TextArea
           name="description"
