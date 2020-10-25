@@ -7,6 +7,7 @@ import Footer from "./components/footer/Footer";
 import Form from "./components/form/Form";
 import Header from "./components/header/Header";
 import AdminPortal from "./components/AdminPortal/AdminPortal";
+import SuccessMessage from "./components/form/SuccessMessage.js"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <Form />
+                <SuccessMessage />
               </Route>
               <Route path="/admin">
                 <AdminPortal exact />

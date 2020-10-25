@@ -106,6 +106,16 @@ a {
   background-color: #d1432a;
 }
 
+.green-btn {
+  background-color: #00A69C;
+  color: #fff;
+  transition: all 100ms;
+}
+
+.green-btn:hover {
+  background-color: #019b91;
+}
+
 .coolvetica {
   font-family: "Coolvetica";
   font-weight: 400;
