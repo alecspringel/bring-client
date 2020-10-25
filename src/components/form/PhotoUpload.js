@@ -58,6 +58,7 @@ class PhotoUpload extends Component {
           className="margin-t20"
           placeholder="Item Name"
           style={{ marginBottom: 15 }}
+          aria-label="item name"
           required
         />
         <TextArea
@@ -68,6 +69,7 @@ class PhotoUpload extends Component {
           type="text"
           rows="3"
           style={{ marginBottom: 15 }}
+          aria-label="description"
         />
       </>
     );
