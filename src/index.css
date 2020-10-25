@@ -27,6 +27,10 @@ p {
   margin: 0;
 }
 
+.h3-large {
+  font-size: 21.5px;
+}
+
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -47,6 +51,15 @@ a {
   text-decoration: none;
 }
 
+.content {
+  padding-bottom: 168px;
+}
+
+.footer-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -58,6 +71,14 @@ a {
 /* General class styles */
 .primary-bg {
   background-color: #de472b;
+}
+
+.yellow-bg {
+  background-color: #F9AF42;
+}
+
+.green-bg {
+  background-color: #00A69C;
 }
 
 .button {
