@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import SubmissionTile from "./SubmissionTile";
 import SubmissionFocus from "./focus/SubmissionFocus";
+import RecycleImg from "../../assets/recycle-light.svg";
 
 class DonationFeed extends Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class DonationFeed extends Component {
     this.state = {
       donations: [],
       focusDonation: null,
+      loading: true,
     };
     this.fetchPendingDonations = this.fetchPendingDonations.bind(this);
     this.focusTile = this.focusTile.bind(this);
@@ -22,7 +25,7 @@ class DonationFeed extends Component {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/unresolved";
     axios.get(url + endpoint).then((donations) => {
-      this.setState({ donations: donations.data }, console.log(donations));
+      this.setState({ donations: donations.data, loading: false }, console.log(donations));
     });
   }
 
@@ -41,9 +44,21 @@ class DonationFeed extends Component {
           this.state.donations.map((donation) => (
             <SubmissionTile donation={donation} focusTile={this.focusTile} />
           ))}
+        {this.state.donations.length === 0 && !this.state.loading &&
+          <NoPendingMsg className="flex-col">
+            <img src={RecycleImg} style={{height: 60}}/>
+            <h1 className="text-reg text-light">You're all caught up!</h1>
+          </NoPendingMsg>
+        }
       </div>
     );
   }
 }
 
 export default DonationFeed;
+
+const NoPendingMsg = styled.div`
+  height: 40vh;
+  align-items: center;
+  justify-content: center;
+`

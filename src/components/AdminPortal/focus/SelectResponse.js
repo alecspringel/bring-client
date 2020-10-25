@@ -17,16 +17,16 @@ class SelectResponse extends Component {
     super(props);
     // If the response type is yes/maybe, default to the first option
     var options = [];
-    var shortMsg = "Response ..."
-    var message = "Select a reason or choose a custom response"
-    if (this.props.responseType === "yes") {
+    var shortMsg = "Response ...";
+    var message = "Select a reason or choose a custom response";
+    if (this.props.responseType === "YES") {
       options = YES_RESPONSES;
-      shortMsg = options[0].label
-      message = options[0].value
-    } else if (this.props.responseType === "maybe") {
+      shortMsg = options[0].label;
+      message = options[0].value;
+    } else if (this.props.responseType === "MAYBE") {
       options = MAYBE_RESPONSES;
-      shortMsg = options[0].label
-      message = options[0].value
+      shortMsg = options[0].label;
+      message = options[0].value;
     } else {
       options = NO_RESPONSES;
     }
@@ -49,8 +49,8 @@ class SelectResponse extends Component {
 
   handleCustom(e) {
     this.setState({
-      message: e.target.value
-    })
+      message: e.target.value,
+    });
   }
 
   render() {
@@ -58,13 +58,13 @@ class SelectResponse extends Component {
 
     return (
       <>
-        {responseType === "yes" && (
+        {responseType === "YES" && (
           <YesBtn className="margin-b10" style={{ cursor: "default" }} />
         )}
-        {responseType === "maybe" && (
+        {responseType === "MAYBE" && (
           <MaybeBtn className="margin-b10" style={{ cursor: "default" }} />
         )}
-        {responseType === "no" && (
+        {responseType === "NO" && (
           <NoBtn className="margin-b10" style={{ cursor: "default" }} />
         )}
 
@@ -83,12 +83,20 @@ class SelectResponse extends Component {
         <DynamicTextArea
           className="margin-t20"
           style={{ width: "100%", height: 150 }}
-          placeholder={this.state.shortMsg === "Custom" ? "Enter your reply ..." :this.state.message}
+          placeholder={
+            this.state.shortMsg === "Custom"
+              ? "Enter your reply ..."
+              : this.state.message
+          }
           value={this.state.message}
           onChange={this.state.shortMsg === "Custom" && this.handleCustom}
           typable={this.state.shortMsg === "Custom"}
         />
-        <SendMessageBtn responseType={responseType} />
+        <SendMessageBtn
+          donation={donation}
+          responseType={responseType}
+          message={this.state.message}
+        />
       </>
     );
   }
@@ -101,9 +109,11 @@ const DynamicTextArea = styled(TextArea)`
   border: 1px solid #dddddd;
   color: #a1a1a1;
 
-  ${props => props.typable && css`
-    background: #fff;
-    border: 1px solid #dddddd;
-    color: #5c5b5a;
-  `}
+  ${(props) =>
+    props.typable &&
+    css`
+      background: #fff;
+      border: 1px solid #dddddd;
+      color: #5c5b5a;
+    `}
 `;

@@ -10,9 +10,9 @@ class YesNoMaybeButtons extends Component {
     return (
       <Section animate={animate}>
         <ButtonWrapper className="flex-row">
-          <NoBtn onClick={() => setType("no")}/>
-          <MaybeBtn onClick={() => setType("maybe")}/>
-          <YesBtn onClick={() => setType("yes")}/>
+          <NoBtn onClick={() => setType("NO")}/>
+          <MaybeBtn onClick={() => setType("MAYBE")}/>
+          <YesBtn onClick={() => setType("YES")}/>
         </ButtonWrapper>
       </Section>
     );
