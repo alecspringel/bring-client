@@ -22,6 +22,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0px 2px 3px 0px #00a69c52;
+  transition: all 150ms;
+  &:hover {
+    background-color: #009e95;
+  }
 `;
 
 const Checkmark = styled.img`

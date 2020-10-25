@@ -64,6 +64,14 @@ a {
   background-color: #de472b;
 }
 
+.yellow-bg {
+  background-color: #F9AF42;
+}
+
+.green-bg {
+  background-color: #00A69C;
+}
+
 .button {
   cursor: pointer;
   border-radius: 3px;

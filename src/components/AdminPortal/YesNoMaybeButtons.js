@@ -2,16 +2,17 @@ import React, { Component } from "react";
 import NoBtn from "../general/NoBtn";
 import YesBtn from "../general/YesBtn";
 import MaybeBtn from "../general/MaybeBtn";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 class YesNoMaybeButtons extends Component {
   render() {
+    const { setType, animate } = this.props;
     return (
-      <Section>
+      <Section animate={animate}>
         <ButtonWrapper className="flex-row">
-          <NoBtn />
-          <MaybeBtn />
-          <YesBtn />
+          <NoBtn onClick={() => setType("no")}/>
+          <MaybeBtn onClick={() => setType("maybe")}/>
+          <YesBtn onClick={() => setType("yes")}/>
         </ButtonWrapper>
       </Section>
     );
@@ -29,6 +30,13 @@ const Section = styled.section`
   padding: 17px;
   border-radius: 30px 30px 0 0;
   box-shadow: 0px -1px 5px #00000030;
+  transition: all 300ms ease-in;
+
+  ${(props) =>
+    props.animate &&
+    css`
+      transform: translate(0, 200%);
+    `}
 `;
 
 const ButtonWrapper = styled.div`

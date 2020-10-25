@@ -57,6 +57,7 @@ const Content = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  z-index: 1; 
   flex: 1;
   box-shadow: 3px 0px 7px #0000002e;
 `;
