@@ -32,7 +32,6 @@ class ImageGallery extends Component {
 
   render() {
     const { images } = this.props;
-    const numImages = this.props.images
     return (
       <Wrapper>
         <Primary src={images[this.state.current]} />

@@ -4,7 +4,6 @@ import {withRouter} from 'react-router-dom';
 import { post } from "axios";
 import setAuthToken from "../../functions/setAuthToken";
 import jwt_decode from "jwt-decode";
-import Button from "../general/Button";
 import TextInput from "../general/TextInput";
 
 class Login extends Component {
@@ -84,9 +83,10 @@ class Login extends Component {
             value={this.state.password}
             onChange={this.onChange}
           />
-          <Button
+          <input
             className="button primary-btn"
             label="Sign In"
+            type="submit"
             onClick={this.onSubmit}
           />
         </FormWrapper>

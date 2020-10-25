@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // React router will allow us to create routes within the app that will
 // be rendered client-side
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import setAuthToken from "./functions/setAuthToken";
 import styled from "styled-components";
 import Footer from "./components/footer/Footer";
 import Form from "./components/form/Form";
@@ -23,10 +24,17 @@ class App extends Component {
       auth,
     }
     this.setAuth = this.setAuth.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
   setAuth() {
     this.setState({ auth: !this.state.auth })
+  }
+
+  signOut() {
+    this.setState({ auth: false });
+    localStorage.removeItem("bringToken");
+    setAuthToken(null);
   }
 
   render() {
@@ -52,7 +60,7 @@ class App extends Component {
                 </Route>
               </Switch>
             </div>
-            <Footer />
+            <Footer signOut={this.signOut} auth={this.state.auth}/>
           </div>
         </Content>
       </Router>

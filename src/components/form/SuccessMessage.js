@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import Button from "../general/Button.js"
-
+import Button from "../general/Button.js";
 
 class SuccessMessage extends Component {
   render() {
@@ -14,11 +13,25 @@ class SuccessMessage extends Component {
         )}
         <Content className="container" onClick={(e) => e.stopPropagation()}>
           <div style={{ margin: "0 auto" }}>
-            <h2 style={{ textAlign: "center"}}>Submitted!</h2>
+            <h2 style={{ textAlign: "center" }}>Submitted!</h2>
             <p className="margin-tb10">
-            Thank you!  We'll get back to you soon.
+              Thank you! We'll get back to you soon.
             </p>
-            <Button className="button green-btn" label="SUBMIT ANOTHER ITEM" width="100%" onClick={this.props.close}/>
+            <div className="flex-col margin-t20">
+              <Button
+                className="button green-btn text-white"
+                label="SUBMIT ANOTHER ITEM"
+                width="100%"
+                onClick={this.props.submitMore}
+              />
+              <a
+                className="button grey-btn margin-t10 text-center"
+                width="100%"
+                href="https://bringrecycling.org/"
+              >
+                BACK TO HOME PAGE
+              </a>
+            </div>
           </div>
         </Content>
       </Background>

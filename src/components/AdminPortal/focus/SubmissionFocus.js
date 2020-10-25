@@ -66,10 +66,3 @@ const ImageContainer = styled.div`
   flex: 1;
   box-shadow: 3px 0px 7px #0000002e;
 `;
-
-const Image = styled.img`
-  border-radius: 3px 0 0 3px;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-`;
