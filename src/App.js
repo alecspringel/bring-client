@@ -12,18 +12,20 @@ function App() {
   return (
     <Router>
       <Content className="App">
-        <Header />
-        <div className="container margin-t20">
-          <Switch>
-            <Route path="/" exact>
-              <Form />
-            </Route>
-            <Route path="/admin">
-              <AdminPortal exact/>
-            </Route>
-          </Switch>
+        <div className="footer-wrapper">
+          <Header />
+          <div className="content container margin-t20">
+            <Switch>
+              <Route path="/" exact>
+                <Form />
+              </Route>
+              <Route path="/admin">
+                <AdminPortal exact />
+              </Route>
+            </Switch>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </Content>
     </Router>
   );

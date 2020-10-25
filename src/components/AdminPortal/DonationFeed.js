@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import SubmissionTile from "./SubmissionTile";
 import SubmissionFocus from "./focus/SubmissionFocus";
-import RecycleImg from "../../assets/recycle-light.svg";
+import LogoImg from "../../assets/bring/logo-icon-grey.svg";
 
 class DonationFeed extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ class DonationFeed extends Component {
           ))}
         {this.state.donations.length === 0 && !this.state.loading &&
           <NoPendingMsg className="flex-col">
-            <img src={RecycleImg} style={{height: 60}}/>
+            <img src={LogoImg} style={{height: 60}}/>
             <h1 className="text-reg text-light">You're all caught up!</h1>
           </NoPendingMsg>
         }
