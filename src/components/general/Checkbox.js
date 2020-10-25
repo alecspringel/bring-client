@@ -5,7 +5,7 @@ import styled, { css } from "styled-components";
 const Checkbox = (props) => {
   return (
     <Box isChecked={props.isChecked} {...props}>
-      <Icon viewBox="0 0 24 24" {...props}>
+      <Icon tabindex={'0'} viewBox="0 0 24 24" {...props}>
         <polyline points="20 6 9 17 4 12" {...props}/>
       </Icon>
     </Box>

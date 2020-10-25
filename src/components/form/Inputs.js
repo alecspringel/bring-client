@@ -92,6 +92,7 @@ class Inputs extends Component {
               type="text"
               name="first"
               placeholder="First Name"
+              aria-label="first name"
               required
             />
             <TextInput
@@ -101,6 +102,7 @@ class Inputs extends Component {
               type="text"
               name="last"
               placeholder="Last Name"
+              aria-label="last name"
               required
             />
             <TextInput
@@ -110,6 +112,7 @@ class Inputs extends Component {
               type="email"
               name="email"
               placeholder="Email"
+              aria-label="email"
               required
             />
             <TextInput
@@ -119,6 +122,7 @@ class Inputs extends Component {
               type="tel"
               name="phone"
               placeholder="Phone Number"
+              aria-label="phone number"
               required
             />
             <h4 className="text-light margin-t10 margin-b10">
