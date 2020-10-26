@@ -21,12 +21,20 @@ class Inputs extends Component {
       preferPhone: false,
       // Success Modal
       showSuccess: false,
+      errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleFiles = this.handleFiles.bind(this);
     this.toggleSuccess = this.toggleSuccess.bind(this);
     this.submitMore = this.submitMore.bind(this);
+    this.setError = this.setError.bind(this);
+  }
+
+  setError(errors) {
+    this.setState({
+      errors
+    })
   }
 
   // Handles changes from input fields
@@ -80,6 +88,7 @@ class Inputs extends Component {
               handleFiles={this.handleFiles}
               itemName={this.state.itemName}
               description={this.state.description}
+              errors={this.state.errors}
             />
           </ImageSection>
           <FormSection>
@@ -93,6 +102,7 @@ class Inputs extends Component {
               name="first"
               placeholder="First Name"
               aria-label="first name"
+              error={this.state.errors.first}
               required
             />
             <TextInput
@@ -103,6 +113,7 @@ class Inputs extends Component {
               name="last"
               placeholder="Last Name"
               aria-label="last name"
+              error={this.state.errors.last}
               required
             />
             <TextInput
@@ -113,6 +124,7 @@ class Inputs extends Component {
               name="email"
               placeholder="Email"
               aria-label="email"
+              error={this.state.errors.email}
               required
             />
             <TextInput
@@ -123,6 +135,7 @@ class Inputs extends Component {
               name="phone"
               placeholder="Phone Number"
               aria-label="phone number"
+              error={this.state.errors.phone}
               required
             />
             <h4 className="text-light margin-t10 margin-b10">
@@ -153,6 +166,7 @@ class Inputs extends Component {
               </div>
             </CheckboxDiv>
             <SubmitButton
+              setError={this.setError}
               files={this.state.files}
               first={this.state.first}
               last={this.state.last}

@@ -4,17 +4,6 @@ import styled, { css } from "styled-components";
 // Hide checkbox visually but remain accessible to screen readers.
 // Source: https://polished.js.org/docs/#hidevisually
 
-// const Checkbox = ({ className, isChecked, ...props }) => (
-//   <CheckboxContainer className={className}>
-//     <HiddenCheckbox checked={isChecked} {...props} />
-//     <StyledCheckbox isChecked={isChecked}>
-//       <Icon viewBox="0 0 24 24">
-//         <polyline points="20 6 9 17 4 12" />
-//       </Icon>
-//     </StyledCheckbox>
-//   </CheckboxContainer>
-// )
-
 // Takes a prop ('isChecked': bool) to determine if the box is checked or not
 const Checkbox = (props) => {
   return (
@@ -57,8 +46,8 @@ const Box = styled.div`
   ${(props) =>
     props.ischecked &&
     css`
-      background-color: #f9af42;
-      border: 1px solid #ab6c0e;
+      background-color: #008eff;
+      border: 1px solid #004e8c;
     `}
   ${Icon} {
     visibility: ${(props) => (props.ischecked ? "visible" : "hidden")};

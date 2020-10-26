@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DonationFeed from "./DonationFeed";
+import DonationFeed from "./donationFeed/DonationFeed";
 
 class AdminPortal extends Component {
   constructor(props) {

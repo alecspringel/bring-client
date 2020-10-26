@@ -32,7 +32,7 @@ class SubmissionTile extends Component {
         </ImgBackground>
         <DescriptionDiv>
           <h2>{this.props.donation.itemName}</h2>
-          <FromLabel className="text-light">
+          <FromLabel className="text-light text-reg">
             from {this.props.donation.first} {this.props.donation.last}
           </FromLabel>
           <Description className="margin-t10 text-reg">
