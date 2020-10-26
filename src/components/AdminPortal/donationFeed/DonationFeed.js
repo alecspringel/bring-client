@@ -5,6 +5,7 @@ import SubmissionTile from "../SubmissionTile";
 import SubmissionFocus from "../focus/SubmissionFocus";
 import LogoImg from "../../../assets/bring/logo-icon-grey.svg";
 import FeedOptions from "./FeedOptions";
+import { withRouter } from "react-router-dom";
 
 class DonationFeed extends Component {
   constructor(props) {
@@ -38,6 +39,12 @@ class DonationFeed extends Component {
         { donations: donations.data, loading: false },
         console.log(donations)
       );
+    })
+    .catch(err => {
+      if(err.response.status === 403) {
+        localStorage.removeItem("bringToken")
+        this.props.history.push("/login")
+      }
     });
   }
 
@@ -99,7 +106,7 @@ class DonationFeed extends Component {
   }
 }
 
-export default DonationFeed;
+export default withRouter(DonationFeed);
 
 const NoPendingMsg = styled.div`
   height: 40vh;
