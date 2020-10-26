@@ -17,4 +17,7 @@ const Input = styled.textarea`
   border-radius: 2px;
   box-shadow: 0px 0px 2px 0px #00000033;
   resize: none;
+  &:focus {
+    outline-color: #2684ff;
+  }
 `
