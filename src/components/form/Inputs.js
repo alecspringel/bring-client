@@ -133,20 +133,22 @@ class Inputs extends Component {
                 <Checkbox
                   isChecked={this.state.preferEmail}
                   name="preferEmail"
+                  id="preferEmail"
                   onClick={this.handleCheckbox}
                 />{" "}
                 <span className="noselect" style={{ marginLeft: 7 }}>
-                  Email
+                  <label htmlFor="preferEmail">Email</label>
                 </span>
               </div>
               <div className="flex-row">
                 <Checkbox
                   isChecked={this.state.preferPhone}
                   name="preferPhone"
+                  id="preferPhone"
                   onClick={this.handleCheckbox}
                 />{" "}
                 <span className="noselect" style={{ marginLeft: 7 }}>
-                  Text
+                <label htmlFor="preferPhone">Text</label>
                 </span>
               </div>
             </CheckboxDiv>

@@ -74,6 +74,7 @@ class Login extends Component {
             name="username"
             value={this.state.username}
             onChange={this.onChange}
+            aria-label="username"
           />
           <TextInput
             placeholder="Password"
@@ -82,6 +83,7 @@ class Login extends Component {
             type="password"
             value={this.state.password}
             onChange={this.onChange}
+            aria-label="password"
           />
           <input
             className="button primary-btn"
