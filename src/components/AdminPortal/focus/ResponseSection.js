@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import YesNoMaybeButtons from "../YesNoMaybeButtons";
 import SelectResponse from "./SelectResponse";
+import GreenCheck from "../../../assets/checkmark-green.svg"
 
 class ResponseSection extends Component {
   constructor(props) {
@@ -41,7 +42,19 @@ class ResponseSection extends Component {
             {donation.first} {donation.last}
           </h3>
           <ContactInfo className="text-light text-reg">
-            {donation.email}
+            <div style={{ marginBottom: 5 }}>
+              <a
+                className="text-light text-reg"
+                href={"mailto:" + donation.email}
+              >
+                {donation.email} {donation.preferEmail && <PreferredCheck src={GreenCheck} />}
+              </a>
+            </div>
+            <div>
+              <a className="text-light text-reg" href={"tel:" + donation.phone}>
+                {donation.phone} {donation.preferPhone && <PreferredCheck src={GreenCheck} />}
+              </a>
+            </div>
           </ContactInfo>
           <h2>{donation.itemName}</h2>
           <Description className="text-reg margin-t10">
@@ -100,4 +113,10 @@ const Animation2 = styled.div`
     css`
       transform: scale(1);
     `} */
+`;
+
+const PreferredCheck = styled.img`
+  vertical-align: middle;
+  margin-left: 5px;
+  height: 15px;
 `;
