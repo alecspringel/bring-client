@@ -2,6 +2,8 @@
 
 This project is part of the 2020 Hack For A Cause, where teams implement solutions for local non profits in 72 hours.
 
+Please also visit the corresponding server for this project [bring-server](https://github.com/alecspringel/bring-server).
+
 BRING Reycling is a 501(c)(3) non-profit in Eugene, OR responsible for collecting and redistributing recyclable/reusable donations ranging from building materials, furniture, appliances, hardware, and so much more.
 
 The purpose of the BRING Recycling Client is to allow potential donors to upload images of their donations before bringing them to the facility. Admins can review the photos and contact the donor using prerecorded or custom responses.
