@@ -68,7 +68,7 @@ class SelectResponse extends Component {
           <NoBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"no"}/>
         )}
 
-        <h2>
+        <h2 className="text-center">
           {donation.itemName},{" "}
           <span className="text-reg">
             from {donation.first} {donation.last}

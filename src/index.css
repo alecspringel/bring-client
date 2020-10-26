@@ -5,6 +5,20 @@
   color: #5c5b5a;
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #f6f6f6;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #e4e4e4;
+}
+
 body {
   margin: 0;
   font-family: "Lato", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
@@ -71,6 +85,10 @@ a {
 /* General class styles */
 .primary-bg {
   background-color: #de472b;
+}
+
+.primary-color {
+  color: #de472b;
 }
 
 .yellow-bg {
