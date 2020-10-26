@@ -201,6 +201,9 @@ export default Inputs;
 
 const FormWrapper = styled.form`
   justify-content: space-between;
+  @media (max-width: 756px) {
+    flex-direction: column;
+  }
 `;
 
 const ImageSection = styled.div`
@@ -209,6 +212,10 @@ const ImageSection = styled.div`
 
 const FormSection = styled.div`
   width: 250px;
+  @media (max-width: 756px) {
+    margin-bottom: 30px;
+    width: 100%;
+  }
 `;
 
 const CheckboxDiv = styled.div`

@@ -69,6 +69,12 @@ a {
   padding-bottom: 168px;
 }
 
+@media (max-width: 900px) {
+  .content {
+    padding-bottom: 300px;
+  }
+}
+
 .footer-wrapper {
   position: relative;
   min-height: 100vh;

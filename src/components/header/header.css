@@ -21,6 +21,12 @@ media queries */
   }
 }
 
+@media (min-width: 200px) {
+  .bring-logo {
+    width: 200px;
+  }
+}
+
 @media (min-width: 576px) {
   .mobile-nav {
     display: flex;
