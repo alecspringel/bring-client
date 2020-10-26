@@ -10,13 +10,13 @@ The purpose of the BRING Recycling Client is to allow potential donors to upload
 ### User Form
 Submissions are made from the public form. Here, donors can enter their contact information and photos of their items with descriptions.  
 
-![](media/form.gif)
+![](media/form.GIF)
 
 ### Admin Portal
 Admins can sign in using the link in the footer. From here, admins can view a feed of all pending donations, and can begin responding to individual requests.  
 
 ![](media/admin-portal.GIF)
-![](media/response-description.GIF)
+![](media/response-description.jpg)
 
 ### Responses
 Each option contains a set of predefined responses, as well as a "custom" option which allows the admin to enter their own response to the submission.
