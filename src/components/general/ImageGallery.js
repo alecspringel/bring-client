@@ -11,19 +11,30 @@ class ImageGallery extends Component {
       primary = props.images[0];
     }
     this.state = {
+      images: props.images,
       primary,
       current: 0,
     };
     this.nextImage = this.nextImage.bind(this);
   }
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.images !== state.images) {
+      return {
+        images: props.images,
+        current: 0,
+      };
+    }
+    return null;
+  }
+
   nextImage(increment) {
-    if (this.props.images.length !== 0) {
+    if (this.state.images.length !== 0) {
       var current = this.state.current + increment;
-      if (current === this.props.images.length) {
+      if (current === this.state.images.length) {
         this.setState({ current: 0 });
       } else if (current === -1) {
-        this.setState({ current: this.props.images.length - 1 });
+        this.setState({ current: this.state.images.length - 1 });
       } else {
         this.setState({ current });
       }
@@ -31,10 +42,9 @@ class ImageGallery extends Component {
   }
 
   render() {
-    const { images } = this.props;
     return (
       <Wrapper>
-        <Primary src={images[this.state.current]} />
+        <Primary src={this.state.images[this.state.current]} />
         <Overlay>
           <div style={{ width: "100%" }}>
             <LeftArrow
@@ -46,8 +56,8 @@ class ImageGallery extends Component {
               src={RightArrowImg}
               onClick={() => this.nextImage(1)}
               show={
-                this.state.current !== this.props.images.length - 1 &&
-                this.props.images.length > 1
+                this.state.current !== this.state.images.length - 1 &&
+                this.state.images.length > 1
               }
             />
           </div>
