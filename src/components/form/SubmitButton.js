@@ -28,7 +28,7 @@ class SubmitButton extends Component {
       errors.phone = "Plase provide your phone number"
     }
     if(this.props.itemName.length === 0) {
-      errors.phone = "Plase provide an item name"
+      errors.itemName = "Plase provide an item name"
     }
     if(!this.props.preferEmail && !this.props.preferPhone) {
       errors.prefer = "Please select a preferred contact method"
@@ -68,9 +68,15 @@ class SubmitButton extends Component {
         'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,
       }
     }
-    await post(url + endpoint, formData, config).then((res) => {
-      console.log(res);
-      this.props.toggleSuccess()
+    await post(url + endpoint, formData, config)
+    .then((res) => {
+      if(res.status === 200) {
+        this.props.toggleSuccess()
+      }
+    })
+    .catch((err, ) => {
+      console.log(err)
+      this.props.setError(err.response.data);
     })
   }
 

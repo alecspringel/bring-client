@@ -125,6 +125,8 @@ const Primary = styled.img`
   max-height: 100%;
   max-width: 100%;
   z-index: 1;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 `;
 
 const Overlay = styled.div`
@@ -133,12 +135,18 @@ const Overlay = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 `;
 
 const NextArrow = styled.img`
   cursor: pointer;
   height: 30px;
   opacity: 0.5;
+  transition: opacity 150ms;
+  &:hover {
+    opacity: 0.6;
+  }
   display: ${(props) => (props.show ? "block" : "none")};
 `;
 
@@ -173,6 +181,8 @@ const EnlargeWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
 `;
 
 const EnlargeBackground = styled.img`
