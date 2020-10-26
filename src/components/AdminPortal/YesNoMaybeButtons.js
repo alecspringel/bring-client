@@ -10,9 +10,18 @@ class YesNoMaybeButtons extends Component {
     return (
       <Section animate={animate}>
         <ButtonWrapper className="flex-row">
-          <NoBtn onClick={() => setType("NO")} aria-label={"no"}/>
-          <MaybeBtn onClick={() => setType("MAYBE")} aria-label={"maybe"}/>
-          <YesBtn onClick={() => setType("YES")} aria-label={"yes"}/>
+          <div className="flex-col">
+            <NoBtn onClick={() => setType("NO")} aria-label={"no"} />
+            <Label className="margin-t10">Reject</Label>
+          </div>
+          <div className="flex-col">
+            <MaybeBtn onClick={() => setType("MAYBE")} aria-label={"maybe"} />
+            <Label className="margin-t10">Maybe</Label>
+          </div>
+          <div className="flex-col">
+            <YesBtn onClick={() => setType("YES")} aria-label={"yes"} />
+            <Label className="margin-t10">Accept</Label>
+          </div>
         </ButtonWrapper>
       </Section>
     );
@@ -42,5 +51,9 @@ const Section = styled.section`
 const ButtonWrapper = styled.div`
   width: 80%;
   margin: auto;
-  justify-content: space-evenly;
+  justify-content: space-around;
+`;
+
+const Label = styled.p`
+  margin-top: 5px;
 `;

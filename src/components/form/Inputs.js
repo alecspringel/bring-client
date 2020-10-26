@@ -30,6 +30,7 @@ class Inputs extends Component {
     this.toggleSuccess = this.toggleSuccess.bind(this);
     this.submitMore = this.submitMore.bind(this);
     this.setError = this.setError.bind(this);
+    this.removeFiles = this.removeFiles.bind(this);
   }
 
   setError(errors) {
@@ -59,6 +60,12 @@ class Inputs extends Component {
         e.target.getAttribute("name")
       ],
     });
+  }
+
+  removeFiles() {
+    this.setState({
+      files: null
+    })
   }
 
   handleFiles(e) {
@@ -95,6 +102,7 @@ class Inputs extends Component {
               itemName={this.state.itemName}
               description={this.state.description}
               errors={this.state.errors}
+              removeFiles={this.removeFiles}
             />
           </ImageSection>
           <FormSection>
@@ -187,7 +195,7 @@ class Inputs extends Component {
             />
             <div className="margin-t10">
             {this.state.errorMsgs && this.state.errorMsgs.map((error) => 
-              <div><p className="primary-color">{error}</p></div>
+              <div key={error}><p className="primary-color">{error}</p></div>
             )}
             </div>
           </FormSection>

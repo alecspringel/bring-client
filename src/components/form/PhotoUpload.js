@@ -13,7 +13,7 @@ class PhotoUpload extends Component {
       handleChange,
       itemName,
       description,
-      errors
+      errors,
     } = this.props;
 
     // Displayed in gallery
@@ -40,15 +40,14 @@ class PhotoUpload extends Component {
               <Icon src={ImgIcon} />
               <h3 style={{ color: "#000", marginBottom: 5 }}>Upload Images</h3>
               <p>Select up to 5 images for us to review</p>
-              <UploadBtn
-                className="button margin-t20"
-              >
-                Choose Files
-              </UploadBtn>
+              <UploadBtn className="button margin-t20">Choose Files</UploadBtn>
             </div>
           ) : (
             <PhotoWrapper className="text-center">
               <ImageGallery images={images} />
+              <ChangeUpload className="margin-t20" onClick={this.props.removeFiles}>
+                Remove files
+              </ChangeUpload>
             </PhotoWrapper>
           )}
         </Background>
@@ -100,6 +99,8 @@ const InvisibleFile = styled.input`
   position: absolute;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
 `;
 
 const PhotoWrapper = styled.div`
@@ -111,4 +112,15 @@ const UploadBtn = styled.div`
   box-shadow: 0px 0px 2px #00000054;
   background: #fff;
   padding: 7px;
+`;
+
+const ChangeUpload = styled.div`
+  cursor: pointer;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0px 0px 5px #00000054;
+  background: #fff;
+  padding: 7px 21px;
 `;
