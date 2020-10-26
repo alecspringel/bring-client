@@ -6,10 +6,42 @@ class SubmitButton extends Component {
   constructor(props) {
     super(props);
     this.sendCreateDonation = this.sendCreateDonation.bind(this);
+    this.validateInput = this.validateInput.bind(this);
   }
 
-  async sendCreateDonation(e) {
+  validateInput(e) {
     e.preventDefault()
+    var errors = {};
+    if(!this.props.files || this.props.files.length === 0) {
+      errors.files = "Please upload at least one image"
+    }
+    if(this.props.first.length === 0) {
+      errors.first = "Please provide your first name"
+    }
+    if(this.props.last.length === 0) {
+      errors.last = "Plase provide your last name"
+    }
+    if(this.props.email.length === 0) {
+      errors.email = "Plase provide your email"
+    }
+    if(this.props.phone.length === 0) {
+      errors.phone = "Plase provide your phone number"
+    }
+    if(this.props.itemName.length === 0) {
+      errors.phone = "Plase provide an item name"
+    }
+    if(!this.props.preferEmail && !this.props.preferPhone) {
+      errors.prefer = "Please select a preferred contact method"
+    }
+    if(Object.getOwnPropertyNames(errors).length !== 0) {
+      this.props.setError(errors);
+      console.log("error")
+    } else {
+      this.sendCreateDonation()
+    }
+  }
+
+  async sendCreateDonation() {    
     // URL stored in .env
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/create"
@@ -43,7 +75,7 @@ class SubmitButton extends Component {
   }
 
   render() {
-  return (<Button className="button primary-btn" label="SUBMIT" width="100%" onClick={this.sendCreateDonation}/>);
+  return (<Button className="button primary-btn" label="SUBMIT" width="100%" onClick={this.validateInput}/>);
   }
 };
 

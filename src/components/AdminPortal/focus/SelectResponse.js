@@ -75,6 +75,7 @@ class SelectResponse extends Component {
           </span>
         </h2>
         <Selector
+          className="margin-t20"
           options={this.state.options}
           onChange={this.setMessage}
           value={this.state.shortMsg}
