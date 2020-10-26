@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled, { css } from "styled-components";
 import YesNoMaybeButtons from "../YesNoMaybeButtons";
 import SelectResponse from "./SelectResponse";
-import GreenCheck from "../../../assets/checkmark-green.svg"
+import GreenCheck from "../../../assets/checkmark-green.svg";
 
 class ResponseSection extends Component {
   constructor(props) {
@@ -38,28 +38,35 @@ class ResponseSection extends Component {
           </Animation2>
         )}
         <Animation1 animate={this.state.responseType}>
-          <h3 className="h3-large">
-            {donation.first} {donation.last}
-          </h3>
-          <ContactInfo className="text-light text-reg">
-            <div style={{ marginBottom: 5 }}>
-              <a
-                className="text-light text-reg"
-                href={"mailto:" + donation.email}
-              >
-                {donation.email} {donation.preferEmail && <PreferredCheck src={GreenCheck} />}
-              </a>
-            </div>
-            <div>
-              <a className="text-light text-reg" href={"tel:" + donation.phone}>
-                {donation.phone} {donation.preferPhone && <PreferredCheck src={GreenCheck} />}
-              </a>
-            </div>
-          </ContactInfo>
-          <h2>{donation.itemName}</h2>
-          <Description className="text-reg margin-t10">
-            {donation.description}
-          </Description>
+          <MarginWrapper>
+            <h3 className="h3-large">
+              {donation.first} {donation.last}
+            </h3>
+            <ContactInfo className="text-light text-reg">
+              <div style={{ marginBottom: 5 }}>
+                <a
+                  className="text-light text-reg"
+                  href={"mailto:" + donation.email}
+                >
+                  {donation.email}{" "}
+                  {donation.preferEmail && <PreferredCheck src={GreenCheck} />}
+                </a>
+              </div>
+              <div>
+                <a
+                  className="text-light text-reg"
+                  href={"tel:" + donation.phone}
+                >
+                  {donation.phone}{" "}
+                  {donation.preferPhone && <PreferredCheck src={GreenCheck} />}
+                </a>
+              </div>
+            </ContactInfo>
+            <h2>{donation.itemName}</h2>
+            <Description className="text-reg margin-t10">
+              {donation.description}
+            </Description>
+          </MarginWrapper>
         </Animation1>
         <YesNoMaybeButtons
           setType={this.setType}
@@ -89,14 +96,21 @@ const Description = styled.h3`
 const Animation1 = styled.div`
   z-index: 0;
   transition: all 600ms ease-in;
-  margin: 30px;
-
+  height: calc(100% - 120px);
+  width: 100%;
+  position: absolute;
+  overflow: auto;
   ${(props) =>
     props.animate &&
     css`
       display: none;
       transform: translate(0, 200%);
     `}
+`;
+
+const MarginWrapper = styled.div`
+  margin: 30px;
+  word-break: break-word;
 `;
 
 const Animation2 = styled.div`
