@@ -13,6 +13,7 @@ class PhotoUpload extends Component {
       handleChange,
       itemName,
       description,
+      errors
     } = this.props;
 
     // Displayed in gallery
@@ -59,6 +60,7 @@ class PhotoUpload extends Component {
           placeholder="Item Name"
           style={{ marginBottom: 15 }}
           aria-label="item name"
+          error={errors.itemName}
           required
         />
         <TextArea

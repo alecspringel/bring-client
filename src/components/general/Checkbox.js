@@ -33,8 +33,8 @@ const Box = styled.div`
   ${(props) =>
     props.isChecked &&
     css`
-      background-color: #F9AF42;
-      border: 1px solid #ab6c0e;
+      background-color: #008eff;
+      border: 1px solid #004e8c;
     `}
   ${Icon} {
     visibility: ${(props) => (props.isChecked ? "visible" : "hidden")};
