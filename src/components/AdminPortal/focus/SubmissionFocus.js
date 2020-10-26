@@ -7,11 +7,6 @@ class SubmissionFocus extends Component {
   render() {
     return (
       <Background onClick={this.props.close}>
-        {this.props.close && (
-          <Exit className="text-white" onClick={this.props.close}>
-            &times;
-          </Exit>
-        )}
         <Content className="container" onClick={(e) => e.stopPropagation()}>
           <ImageContainer>
             <ImageGallery images={this.props.donation.imageUrls} />
@@ -24,14 +19,6 @@ class SubmissionFocus extends Component {
 }
 
 export default SubmissionFocus;
-
-const Exit = styled.span`
-  cursor: pointer;
-  font-size: 60px;
-  position: absolute;
-  right: 56px;
-  top: 26px;
-`;
 
 const Background = styled.div`
   position: fixed;
