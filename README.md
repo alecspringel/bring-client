@@ -15,13 +15,13 @@ Submissions are made from the public form. Here, donors can enter their contact 
 ### Admin Portal
 Admins can sign in using the link in the footer. From here, admins can view a feed of all pending donations, and can begin responding to individual requests.  
 
-![](media/admin-portal.gif)
-![](media/response-description.gif)
+![](media/admin-portal.GIF)
+![](media/response-description.GIF)
 
 ### Responses
 Each option contains a set of predefined responses, as well as a "custom" option which allows the admin to enter their own response to the submission.
 
-![](media/response-message.gif)
+![](media/response-message.GIF)
 
 ### Notifications
 Admins will be notified by email and Slack when new donations come in. Upon responding, the donor will also be contacted by their preferred contact method(s) with the message the admin selected.  
