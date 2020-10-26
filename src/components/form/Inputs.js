@@ -21,6 +21,7 @@ class Inputs extends Component {
       preferPhone: false,
       // Success Modal
       showSuccess: false,
+      errorMsgs: [],
       errors: {}
     };
     this.handleChange = this.handleChange.bind(this);
@@ -32,8 +33,13 @@ class Inputs extends Component {
   }
 
   setError(errors) {
+    var errorMsgs = []
+    for(var key in errors) {
+      errorMsgs.push(errors[key]);
+    }
     this.setState({
-      errors
+      errors,
+      errorMsgs
     })
   }
 
@@ -136,6 +142,7 @@ class Inputs extends Component {
               placeholder="Phone Number"
               aria-label="phone number"
               error={this.state.errors.phone}
+              maxLength="20"
               required
             />
             <h4 className="text-light margin-t10 margin-b10">
@@ -178,6 +185,11 @@ class Inputs extends Component {
               preferPhone={this.state.preferPhone}
               toggleSuccess={this.toggleSuccess}
             />
+            <div className="margin-t10">
+            {this.state.errorMsgs && this.state.errorMsgs.map((error) => 
+              <div><p className="primary-color">{error}</p></div>
+            )}
+            </div>
           </FormSection>
         </FormWrapper>
       </>
