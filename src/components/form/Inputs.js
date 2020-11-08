@@ -162,6 +162,7 @@ class Inputs extends Component {
                   isChecked={this.state.preferEmail}
                   name="preferEmail"
                   id="preferEmail"
+                  aria-label="prefer email"
                   onClick={this.handleCheckbox}
                 />{" "}
                 <span className="noselect" style={{ marginLeft: 7 }}>
@@ -173,6 +174,7 @@ class Inputs extends Component {
                   isChecked={this.state.preferPhone}
                   name="preferPhone"
                   id="preferPhone"
+                  aria-label="prefer text message"
                   onClick={this.handleCheckbox}
                 />{" "}
                 <span className="noselect" style={{ marginLeft: 7 }}>
