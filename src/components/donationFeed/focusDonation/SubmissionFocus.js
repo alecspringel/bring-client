@@ -11,7 +11,10 @@ class SubmissionFocus extends Component {
           <ImageContainer>
             <ImageGallery images={this.props.donation.imageUrls} />
           </ImageContainer>
-          <ResponseSection donation={this.props.donation} nextSubmission={this.props.nextSubmission}/>
+          <ResponseSection
+            donation={this.props.donation}
+            nextSubmission={this.props.nextSubmission}
+          />
         </Content>
       </Background>
     );
@@ -49,7 +52,7 @@ const Content = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  z-index: 1; 
+  z-index: 1;
   flex: 1;
   box-shadow: 3px 0px 7px #0000002e;
 `;

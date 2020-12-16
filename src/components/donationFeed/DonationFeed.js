@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import SubmissionTile from "../SubmissionTile";
-import SubmissionFocus from "../focus/SubmissionFocus";
-import LogoImg from "../../../assets/bring/logo-icon-grey.svg";
+import SubmissionTile from "./SubmissionTile";
+import SubmissionFocus from "./focusDonation/SubmissionFocus";
+import LogoImg from "../../assets/bring/logo-icon-grey.svg";
 import FeedOptions from "./FeedOptions";
 import { withRouter } from "react-router-dom";
 
@@ -15,7 +15,7 @@ class DonationFeed extends Component {
       focusDonation: null,
       focusIndex: null,
       loading: true,
-      sort: { createdDate: 1 }
+      sort: { createdDate: 1 },
     };
     this.fetchPendingDonations = this.fetchPendingDonations.bind(this);
     this.focusTile = this.focusTile.bind(this);
@@ -34,18 +34,20 @@ class DonationFeed extends Component {
   fetchPendingDonations(sort) {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/unresolved";
-    axios.get(url + endpoint, { params: sort }).then((donations) => {
-      this.setState(
-        { donations: donations.data, loading: false },
-        console.log(donations)
-      );
-    })
-    .catch(err => {
-      if(err.response.status === 403) {
-        localStorage.removeItem("bringToken")
-        this.props.history.push("/login")
-      }
-    });
+    axios
+      .get(url + endpoint, { params: sort })
+      .then((donations) => {
+        this.setState(
+          { donations: donations.data, loading: false },
+          console.log(donations)
+        );
+      })
+      .catch((err) => {
+        if (err.response.status === 403) {
+          localStorage.removeItem("bringToken");
+          this.props.history.push("/login");
+        }
+      });
   }
 
   focusTile(donation, index) {
@@ -58,17 +60,20 @@ class DonationFeed extends Component {
   nextSubmission() {
     var donations = this.state.donations;
     var focusIndex = null;
-    console.log(this.state)
+    console.log(this.state);
     donations.splice(this.state.focusIndex, 1);
     // Reached the last in list
     if (this.state.focusIndex !== donations.length + 1) {
       focusIndex = focusIndex + 1;
     }
-    this.setState({
-      donations,
-      focusIndex,
-      focusDonation: donations[focusIndex]
-    }, console.log(this.state));
+    this.setState(
+      {
+        donations,
+        focusIndex,
+        focusDonation: donations[focusIndex],
+      },
+      console.log(this.state)
+    );
   }
 
   render() {
@@ -81,7 +86,7 @@ class DonationFeed extends Component {
             nextSubmission={this.nextSubmission}
           />
         )}
-        <FeedOptions sort={this.sort}/>
+        <FeedOptions sort={this.sort} />
         {this.state.donations &&
           this.state.donations.map((donation, index) => (
             <SubmissionTile

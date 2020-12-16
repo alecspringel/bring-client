@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "styled-components";
-import YesNoMaybeButtons from "../YesNoMaybeButtons";
+import YesNoMaybeButtons from "./YesNoMaybeButtons";
 import SelectResponse from "./SelectResponse";
 import GreenCheck from "../../../assets/checkmark-green.svg";
 

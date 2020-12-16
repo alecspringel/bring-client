@@ -24,6 +24,7 @@ body {
   font-family: "Lato", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: scroll;
 }
 
 input,
@@ -98,11 +99,11 @@ a {
 }
 
 .yellow-bg {
-  background-color: #F9AF42;
+  background-color: #f9af42;
 }
 
 .green-bg {
-  background-color: #00A69C;
+  background-color: #00a69c;
 }
 
 .button {
@@ -132,7 +133,7 @@ a {
 }
 
 .green-btn {
-  background-color: #00A69C;
+  background-color: #00a69c;
   color: #fff;
   transition: all 100ms;
 }
@@ -142,7 +143,7 @@ a {
 }
 
 .grey-btn {
-  background-color:#e7e7e7;
+  background-color: #e7e7e7;
   transition: all 100ms;
 }
 
@@ -190,6 +191,14 @@ a {
 .flex-col {
   display: flex;
   flex-direction: column;
+}
+
+.justify {
+  justify-content: center;
+}
+
+.align {
+  align-items: center;
 }
 
 .margin-tb10 {

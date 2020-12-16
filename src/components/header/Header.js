@@ -1,33 +1,23 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import "./header.css";
-import BringLogo from "../../assets/bring/logo.svg";
 import Nav from "./Nav";
+import TopHead from "./TopHead";
+import { useLocation } from "react-router-dom";
+import AdminHeader from "./AdminHeader";
 
-class Header extends Component {
-  render() {
+const Header = () => {
+  const location = useLocation();
+  console.log(location.pathname);
+  if (location.pathname === "/" || location.pathname === "/login") {
     return (
       <>
-        <header className="primary-bg">
-          <HeaderContent className="container flex-row">
-            <a href="https://bringrecycling.org">
-            <img
-              className="bring-logo"
-              src={BringLogo}
-              alt="BRING Recycling logo"
-            />
-            </a>
-          </HeaderContent>
-        </header>
+        <TopHead />
         <Nav />
       </>
     );
+  } else {
+    return <AdminHeader />;
   }
-}
+};
 
 export default Header;
-
-const HeaderContent = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
-`;

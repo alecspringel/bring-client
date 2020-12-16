@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import NoBtn from "../general/NoBtn";
-import YesBtn from "../general/YesBtn";
-import MaybeBtn from "../general/MaybeBtn";
+import NoBtn from "../../general/NoBtn";
+import YesBtn from "../../general/YesBtn";
+import MaybeBtn from "../../general/MaybeBtn";
 import styled, { css } from "styled-components";
 
 class YesNoMaybeButtons extends Component {

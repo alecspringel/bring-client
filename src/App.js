@@ -7,28 +7,29 @@ import styled from "styled-components";
 import Footer from "./components/footer/Footer";
 import Form from "./components/form/Form";
 import Header from "./components/header/Header";
-import AdminPortal from "./components/AdminPortal/AdminPortal";
+import DonationFeed from "./components/donationFeed/DonationFeed";
 import Login from "./components/login/Login";
 import PrivateRoute from "./components/PrivateRoute";
+import DonationHistory from "./components/donationHistory/DonationHistory";
 
 class App extends Component {
   constructor(props) {
     super(props);
     var auth = false;
     const token = localStorage.getItem("bringToken");
-    if(token) {
+    if (token) {
       auth = true;
       setAuthToken(token);
     }
     this.state = {
       auth,
-    }
+    };
     this.setAuth = this.setAuth.bind(this);
     this.signOut = this.signOut.bind(this);
   }
 
   setAuth() {
-    this.setState({ auth: !this.state.auth })
+    this.setState({ auth: !this.state.auth });
   }
 
   signOut() {
@@ -48,19 +49,24 @@ class App extends Component {
                 <Route path="/" exact>
                   <Form />
                 </Route>
-                <Route path="/admin">
-                  <PrivateRoute
-                    path="/admin"
-                    component={AdminPortal}
-                    auth={this.state.auth}
-                  />
-                </Route>
+                <PrivateRoute
+                  exact
+                  path="/admin"
+                  component={DonationFeed}
+                  auth={this.state.auth}
+                />
+                <PrivateRoute
+                  exact
+                  path="/admin/history"
+                  component={DonationHistory}
+                  auth={this.state.auth}
+                />
                 <Route path="/login">
                   <Login exact setAuth={this.setAuth} auth={this.state.auth} />
                 </Route>
               </Switch>
             </div>
-            <Footer signOut={this.signOut} auth={this.state.auth}/>
+            <Footer signOut={this.signOut} auth={this.state.auth} />
           </div>
         </Content>
       </Router>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Selector from "../../general/Selector";
+import Selector from "../general/Selector";
 
 // Values are passed to mongoDB
 const SORT_OPTIONS = [
@@ -19,8 +19,12 @@ const FeedOptions = (props) => {
     <Wrapper>
       <h2 className="text-bold">Pending Donations</h2>
       <RightOptions>
-        <div style={{width: 200}}>
-          <Selector options={SORT_OPTIONS} placeholder="Sort Oldest First" onChange={props.sort}/>
+        <div style={{ width: 200 }}>
+          <Selector
+            options={SORT_OPTIONS}
+            placeholder="Sort Oldest First"
+            onChange={props.sort}
+          />
         </div>
       </RightOptions>
     </Wrapper>

@@ -59,13 +59,25 @@ class SelectResponse extends Component {
     return (
       <>
         {responseType === "YES" && (
-          <YesBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"yes"}/>
+          <YesBtn
+            className="margin-b10"
+            style={{ cursor: "default" }}
+            aria-label={"yes"}
+          />
         )}
         {responseType === "MAYBE" && (
-          <MaybeBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"maybe"}/>
+          <MaybeBtn
+            className="margin-b10"
+            style={{ cursor: "default" }}
+            aria-label={"maybe"}
+          />
         )}
         {responseType === "NO" && (
-          <NoBtn className="margin-b10" style={{ cursor: "default" }} aria-label={"no"}/>
+          <NoBtn
+            className="margin-b10"
+            style={{ cursor: "default" }}
+            aria-label={"no"}
+          />
         )}
 
         <h2 className="text-center">
@@ -90,7 +102,9 @@ class SelectResponse extends Component {
               : this.state.message
           }
           value={this.state.message}
-          onChange={this.state.shortMsg === "Custom" ? this.handleCustom : () => {}}
+          onChange={
+            this.state.shortMsg === "Custom" ? this.handleCustom : () => {}
+          }
           typable={this.state.shortMsg === "Custom"}
         />
         <SendMessageBtn
