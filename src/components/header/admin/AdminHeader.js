@@ -1,5 +1,5 @@
 import React from "react";
-import TopHead from "./TopHead";
+import TopHead from "../TopHead";
 import AdminNav from "./AdminNav";
 
 const AdminHeader = () => {

@@ -4,10 +4,13 @@ import "./index.css";
 import "./fonts/fonts.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { UserProvider } from "./context/UserProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

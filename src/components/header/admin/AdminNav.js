@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import ProfileDropdown from "./ProfileDropdown";
 
 const Nav = () => {
   return (
@@ -15,6 +16,9 @@ const Nav = () => {
               <Link to="/admin/history">History</Link>
             </NavItem>
           </ul>
+          <RightControls>
+            <ProfileDropdown />
+          </RightControls>
         </div>
       </Navigation>
     </div>
@@ -45,4 +49,11 @@ const NavItem = styled.li`
     font-family: "Coolvetica";
     font-size: 18.88px;
   }
+`;
+
+const RightControls = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
 `;

@@ -82,6 +82,7 @@ a {
 }
 
 .container {
+  position: relative;
   margin-right: auto;
   margin-left: auto;
   padding-right: 15px;

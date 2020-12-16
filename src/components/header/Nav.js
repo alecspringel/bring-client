@@ -11,16 +11,22 @@ const Nav = () => {
               <a href="https://bringrecycling.org/shop/">shop</a>
             </NavItem>
             <NavItem>
-              <a href="https://bringrecycling.org/services/">business services</a>
+              <a href="https://bringrecycling.org/services/">
+                business services
+              </a>
             </NavItem>
             <NavItem>
               <a href="https://bringrecycling.org/learn/">learn</a>
             </NavItem>
             <NavItem>
-              <a href="https://bringrecycling.org/news-and-ideas/">news &amp; ideas</a>
+              <a href="https://bringrecycling.org/news-and-ideas/">
+                news &amp; ideas
+              </a>
             </NavItem>
             <NavItem>
-              <a href="https://bringrecycling.org/product-stewardship/">product stewardship</a>
+              <a href="https://bringrecycling.org/product-stewardship/">
+                product stewardship
+              </a>
             </NavItem>
             <NavItem>
               <a href="https://bringrecycling.org/resources/">resources</a>

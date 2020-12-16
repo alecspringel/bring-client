@@ -11,33 +11,9 @@ import DonationFeed from "./components/donationFeed/DonationFeed";
 import Login from "./components/login/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import DonationHistory from "./components/donationHistory/DonationHistory";
+// import { UserContext, UserDispatchContext } from "./context/UserProvider";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    var auth = false;
-    const token = localStorage.getItem("bringToken");
-    if (token) {
-      auth = true;
-      setAuthToken(token);
-    }
-    this.state = {
-      auth,
-    };
-    this.setAuth = this.setAuth.bind(this);
-    this.signOut = this.signOut.bind(this);
-  }
-
-  setAuth() {
-    this.setState({ auth: !this.state.auth });
-  }
-
-  signOut() {
-    this.setState({ auth: false });
-    localStorage.removeItem("bringToken");
-    setAuthToken(null);
-  }
-
   render() {
     return (
       <Router>
@@ -49,24 +25,18 @@ class App extends Component {
                 <Route path="/" exact>
                   <Form />
                 </Route>
-                <PrivateRoute
-                  exact
-                  path="/admin"
-                  component={DonationFeed}
-                  auth={this.state.auth}
-                />
+                <PrivateRoute exact path="/admin" component={DonationFeed} />
                 <PrivateRoute
                   exact
                   path="/admin/history"
                   component={DonationHistory}
-                  auth={this.state.auth}
                 />
                 <Route path="/login">
-                  <Login exact setAuth={this.setAuth} auth={this.state.auth} />
+                  <Login exact />
                 </Route>
               </Switch>
             </div>
-            <Footer signOut={this.signOut} auth={this.state.auth} />
+            <Footer signOut={this.signOut} />
           </div>
         </Content>
       </Router>
