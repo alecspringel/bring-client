@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import { UserDispatchContext } from "../../context/UserProvider";
 
-const SendLogin = ({ username, password }) => {
+const SendLogin = ({ email, password }) => {
   const setUser = useContext(UserDispatchContext);
   const history = useHistory();
   const onSubmit = (e) => {
@@ -13,7 +13,7 @@ const SendLogin = ({ username, password }) => {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/user/login";
     const userData = {
-      username: username,
+      email: email,
       password: password,
     };
     post(url + endpoint, userData).then((res) => {
@@ -23,7 +23,7 @@ const SendLogin = ({ username, password }) => {
 
       // Decode token to get user data
       const decoded = jwt_decode(token);
-      if (decoded.auth) {
+      if (decoded.email) {
         localStorage.setItem("bringToken", token);
         // Set token to Auth header
         setAuthToken(token);

@@ -18,7 +18,7 @@ function UserProvider({ children }) {
     const token = localStorage.getItem("bringToken");
     if (token) {
       const decoded = jwt_decode(token);
-      if (decoded.auth) {
+      if (decoded.email) {
         console.log("User is signed in:", decoded);
         setUserDetails(decoded);
         setAuthToken(token);

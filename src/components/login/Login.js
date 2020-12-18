@@ -16,7 +16,7 @@ const Login = () => {
   }, [user]);
 
   const [data, setData] = useState({
-    username: "",
+    email: "",
     password: "",
     errors: {},
   });
@@ -36,12 +36,12 @@ const Login = () => {
       <FormWrapper className="flex-col text-center">
         <h2 className="margin-tb20">Admin Login</h2>
         <TextInput
-          placeholder="User Name"
+          placeholder="Email"
           className="margin-b10"
-          name="username"
-          value={data.username}
+          name="email"
+          value={data.email}
           onChange={onChange}
-          aria-label="username"
+          aria-label="email"
         />
         <TextInput
           placeholder="Password"
@@ -52,7 +52,7 @@ const Login = () => {
           onChange={onChange}
           aria-label="password"
         />
-        <SendLogin username={data.username} password={data.password} />
+        <SendLogin email={data.email} password={data.password} />
       </FormWrapper>
     </Background>
   );
