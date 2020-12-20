@@ -32,7 +32,7 @@ const ProfileDropdown = () => {
     <Dropdown options={options}>
       <DropdownWrapper className="flex-row align">
         <Profile className="profile-circle flex-row align justify">
-          <h3 className="text-reg">A</h3>
+          <h3 className="text-reg">{user && user.first && user.first[0]}</h3>
         </Profile>
         <ArrowImg
           className="profile-arrow"
