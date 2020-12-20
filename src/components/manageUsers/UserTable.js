@@ -23,6 +23,18 @@ const useStyles2 = makeStyles({
   },
 });
 
+function createData(users) {
+  var rows = [];
+  users.forEach((user, index) => {
+    rows.push({
+      name: user.first ? user.first + " " + user.last : "Invited",
+      email: user.email,
+      role: user.isAdmin ? "Admin" : "User",
+    });
+  });
+  return rows;
+}
+
 export default function UserTable() {
   const classes = useStyles2();
   const [page, setPage] = React.useState(0);
@@ -72,18 +84,6 @@ export default function UserTable() {
     dataCopy.splice(index, 1);
     setData([...dataCopy]);
   };
-
-  function createData(users) {
-    var rows = [];
-    users.forEach((user, index) => {
-      rows.push({
-        name: user.first ? user.first + " " + user.last : "Invited",
-        email: user.email,
-        role: user.isAdmin ? "Admin" : "User",
-      });
-    });
-    return rows;
-  }
 
   return (
     <>
