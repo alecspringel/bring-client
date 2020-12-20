@@ -1,16 +1,23 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { UserDispatchContext } from "../../context/UserProvider";
 import { UserContext } from "../../context/UserProvider";
 
 const Footer = (props) => {
   const setUser = useContext(UserDispatchContext);
   const user = useContext(UserContext);
+  const location = useLocation();
+  // Dont render footer for signup page
+  if (location.pathname === "/admin/signup") {
+    return null;
+  }
+
   const signOut = () => {
     localStorage.removeItem("bringToken");
     setUser(false);
   };
+
   return (
     <Foot>
       <div

@@ -17,18 +17,14 @@ const SendLogin = ({ email, password }) => {
       password: password,
     };
     post(url + endpoint, userData).then((res) => {
-      // Save to localStorage
-      // Set token to localStorage
       const { token } = res.data;
-
-      // Decode token to get user data
       const decoded = jwt_decode(token);
       if (decoded.email) {
         localStorage.setItem("bringToken", token);
         // Set token to Auth header
         setAuthToken(token);
+        // Automatically redirects to feed
         setUser(decoded);
-        history.push("/admin");
       }
     });
   };
