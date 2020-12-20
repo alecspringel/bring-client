@@ -5,7 +5,7 @@ import InviteButton from "./InviteButton";
 
 const ManageUsers = () => {
   return (
-    <div>
+    <div className="content container margin-t20">
       <UserTable />
     </div>
   );

@@ -1,23 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import Description from "./Description";
 import Inputs from "./Inputs";
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  render() {
-    return (
-      <div>
-        <Description />
-        <Inputs />
-        <hr></hr>
-      </div>
-    );
-  }
-}
+const Form = () => (
+  <div className="content container margin-t20">
+    <Description />
+    <Inputs />
+  </div>
+);
 
 export default Form;

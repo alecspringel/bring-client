@@ -32,29 +32,31 @@ const Login = () => {
   }
 
   return (
-    <Background className="flex-row">
-      <FormWrapper className="flex-col text-center">
-        <h2 className="margin-tb20">Admin Login</h2>
-        <TextInput
-          placeholder="Email"
-          className="margin-b10"
-          name="email"
-          value={data.email}
-          onChange={onChange}
-          aria-label="email"
-        />
-        <TextInput
-          placeholder="Password"
-          className="margin-b10"
-          name="password"
-          type="password"
-          value={data.password}
-          onChange={onChange}
-          aria-label="password"
-        />
-        <SendLogin email={data.email} password={data.password} />
-      </FormWrapper>
-    </Background>
+    <div className="content container margin-t20">
+      <Background className="flex-row">
+        <FormWrapper className="flex-col text-center">
+          <h2 className="margin-tb20">Admin Login</h2>
+          <TextInput
+            placeholder="Email"
+            className="margin-b10"
+            name="email"
+            value={data.email}
+            onChange={onChange}
+            aria-label="email"
+          />
+          <TextInput
+            placeholder="Password"
+            className="margin-b10"
+            name="password"
+            type="password"
+            value={data.password}
+            onChange={onChange}
+            aria-label="password"
+          />
+          <SendLogin email={data.email} password={data.password} />
+        </FormWrapper>
+      </Background>
+    </div>
   );
 };
 

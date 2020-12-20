@@ -78,34 +78,36 @@ class DonationFeed extends Component {
 
   render() {
     return (
-      <div style={{ marginBottom: 60 }}>
-        {this.state.focusDonation && (
-          <SubmissionFocus
-            donation={this.state.focusDonation}
-            close={() => this.focusTile(null)}
-            nextSubmission={this.nextSubmission}
-          />
-        )}
-        <FeedOptions sort={this.sort} />
-        {this.state.donations &&
-          this.state.donations.map((donation, index) => (
-            <SubmissionTile
-              donation={donation}
-              focusTile={this.focusTile}
-              index={index}
-              key={index}
+      <div className="content container margin-t20">
+        <div style={{ marginBottom: 60 }}>
+          {this.state.focusDonation && (
+            <SubmissionFocus
+              donation={this.state.focusDonation}
+              close={() => this.focusTile(null)}
+              nextSubmission={this.nextSubmission}
             />
-          ))}
-        {this.state.donations.length === 0 && !this.state.loading && (
-          <NoPendingMsg className="flex-col">
-            <img
-              src={LogoImg}
-              style={{ height: 60 }}
-              alt="BRING hand icon logo"
-            />
-            <h1 className="text-reg text-light">You're all caught up!</h1>
-          </NoPendingMsg>
-        )}
+          )}
+          <FeedOptions sort={this.sort} />
+          {this.state.donations &&
+            this.state.donations.map((donation, index) => (
+              <SubmissionTile
+                donation={donation}
+                focusTile={this.focusTile}
+                index={index}
+                key={index}
+              />
+            ))}
+          {this.state.donations.length === 0 && !this.state.loading && (
+            <NoPendingMsg className="flex-col">
+              <img
+                src={LogoImg}
+                style={{ height: 60 }}
+                alt="BRING hand icon logo"
+              />
+              <h1 className="text-reg text-light">You're all caught up!</h1>
+            </NoPendingMsg>
+          )}
+        </div>
       </div>
     );
   }
