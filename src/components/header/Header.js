@@ -7,19 +7,17 @@ import AdminHeader from "./admin/AdminHeader";
 
 const Header = () => {
   const location = useLocation();
-  console.log(location.pathname);
-  switch (location.pathname) {
-    case "/" || "/login":
-      return (
-        <>
-          <TopHead />
-          <Nav />
-        </>
-      );
-    case "/admin/signup":
-      return null;
-    default:
-      return <AdminHeader />;
+  if (location.pathname === "/" || location.pathname === "/login") {
+    return (
+      <>
+        <TopHead />
+        <Nav />
+      </>
+    );
+  } else if (location.pathname === "/admin/signup") {
+    return null;
+  } else {
+    return <AdminHeader />;
   }
 };
 

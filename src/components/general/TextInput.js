@@ -17,5 +17,6 @@ const Input = styled.input`
   &:focus {
     outline-color: #2684ff;
   }
-  border: ${props => props.error && '1px solid #DE472B'};
+  border: ${(props) => props.error && "1px solid #DE472B"};
+  background: ${(props) => props.disabled && "#f3f3f3"};
 `;

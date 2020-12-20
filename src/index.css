@@ -70,6 +70,14 @@ a {
   text-decoration: none;
 }
 
+.p-large {
+  font-size: 18px;
+}
+
+.p-small {
+  font-size: 14px;
+}
+
 .content {
   padding-bottom: 168px;
 }

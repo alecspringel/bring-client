@@ -22,30 +22,28 @@ class App extends Component {
         <Content className="App">
           <div className="footer-wrapper">
             <Header />
-            <div className="content container margin-t20">
-              <Switch>
-                <Route path="/" exact>
-                  <Form />
-                </Route>
-                <PrivateRoute exact path="/admin" component={DonationFeed} />
-                <PrivateRoute
-                  exact
-                  path="/admin/history"
-                  component={DonationHistory}
-                />
-                <PrivateRoute
-                  exact
-                  path="/admin/manage"
-                  component={ManageUsers}
-                />
-                <Route exact path="/admin/signup">
-                  <AdminSignUp />
-                </Route>
-                <Route path="/login">
-                  <Login exact />
-                </Route>
-              </Switch>
-            </div>
+            <Switch>
+              <Route path="/" exact>
+                <Form />
+              </Route>
+              <PrivateRoute exact path="/admin" component={DonationFeed} />
+              <PrivateRoute
+                exact
+                path="/admin/history"
+                component={DonationHistory}
+              />
+              <PrivateRoute
+                exact
+                path="/admin/manage"
+                component={ManageUsers}
+              />
+              <Route exact path="/admin/signup">
+                <AdminSignUp />
+              </Route>
+              <Route path="/login">
+                <Login exact />
+              </Route>
+            </Switch>
             <Footer signOut={this.signOut} />
           </div>
         </Content>
