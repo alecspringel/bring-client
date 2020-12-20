@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Arrow from "../../../assets/down-arrow-black.svg";
@@ -17,13 +17,16 @@ const ProfileDropdown = () => {
     setUser(false);
     history.push("/login");
   };
-  var options = [{ label: "Sign Out", onClick: signOut }];
 
-  useEffect(() => {
-    if (user && user.isAdmin) {
-      options.unshift({ label: "Manage Users", onClick: true });
-    }
-  }, [user]);
+  var options = [{ label: "Sign Out", onClick: signOut }];
+  if (user && user.isAdmin) {
+    console.log("user is admin");
+
+    options.unshift({
+      label: "Manage Users",
+      onClick: () => history.push("/admin/manage"),
+    });
+  }
 
   return (
     <Dropdown options={options}>

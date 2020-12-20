@@ -5,6 +5,10 @@
   color: #5c5b5a;
 }
 
+button:focus {
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -129,8 +133,26 @@ a {
   transition: all 100ms;
 }
 
+.success-btn {
+  background: #5aac44;
+  color: #fff;
+  transition: all 100ms;
+}
+
+.success-btn:hover {
+  background: #5fb448;
+}
+
+.success-btn:active {
+  background: #5aac44;
+}
+
 .primary-btn:hover {
   background-color: #d1432a;
+}
+
+.primary-btn:active {
+  background-color: #de472b;
 }
 
 .green-btn {
@@ -140,7 +162,11 @@ a {
 }
 
 .green-btn:hover {
-  background-color: #019b91;
+  background-color: #06afa4;
+}
+
+.green-btn:active {
+  background-color: #00a69c;
 }
 
 .grey-btn {
@@ -150,6 +176,24 @@ a {
 
 .grey-btn:hover {
   background-color: #dddddd;
+}
+
+.grey-btn:active {
+  background-color: #e7e7e7;
+}
+
+.dark-grey-btn {
+  background-color: #999999;
+  color: #fff;
+  transition: all 100ms;
+}
+
+.dark-grey-btn:hover {
+  background-color: #a5a5a5;
+}
+
+.dark-grey-btn:active {
+  background-color: #999999;
 }
 
 .coolvetica {

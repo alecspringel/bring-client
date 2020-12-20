@@ -11,6 +11,7 @@ import DonationFeed from "./components/donationFeed/DonationFeed";
 import Login from "./components/login/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import DonationHistory from "./components/donationHistory/DonationHistory";
+import ManageUsers from "./components/manageUsers/ManageUsers";
 // import { UserContext, UserDispatchContext } from "./context/UserProvider";
 
 class App extends Component {
@@ -30,6 +31,11 @@ class App extends Component {
                   exact
                   path="/admin/history"
                   component={DonationHistory}
+                />
+                <PrivateRoute
+                  exact
+                  path="/admin/manage"
+                  component={ManageUsers}
                 />
                 <Route path="/login">
                   <Login exact />

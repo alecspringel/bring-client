@@ -15,15 +15,19 @@ const Dropdown = (props) => {
         <>
           <Wrapper>
             {props.children}
-            {open && (
+            {props.options && open && (
               <Options {...props} open={open}>
-                {props.options.map((option) => (
-                  <DropdownOption onClick={option.onClick}>
+                {props.options.map((option, index) => (
+                  <DropdownOption
+                    onClick={option.onClick}
+                    key={option.key || index}
+                  >
                     {option.label}
                   </DropdownOption>
                 ))}
               </Options>
             )}
+            {props.content && open && props.content}
           </Wrapper>
         </>
       }
