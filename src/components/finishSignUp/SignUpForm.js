@@ -2,21 +2,27 @@ import React, { useContext, useState } from "react";
 import TextInput from "../general/TextInput";
 import Button from "../general/Button";
 import styled from "styled-components";
-import { UserContext } from "../../context/UserProvider";
+import { UserContext, UserDispatchContext } from "../../context/UserProvider";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const SignUpForm = () => {
+  const history = useHistory();
   const user = useContext(UserContext);
+  const setUser = useContext(UserDispatchContext);
   const [data, setData] = useState({
     first: "",
     last: "",
     password: "",
     confirm: "",
   });
+  // Handles errors from the endpoint response
   const [errors, setErrors] = useState(null);
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
+  // Sends signup request
   const sendSignUp = (e) => {
     e.preventDefault();
     const url = process.env.REACT_APP_SERVER_URL;
@@ -24,12 +30,16 @@ const SignUpForm = () => {
     axios
       .post(url + endpoint, data)
       .then((res) => {
-        console.log(res, "response");
+        // Sign user out after sign up and send backt to login
+        localStorage.removeItem("bringToken");
+        setUser(false);
+        history.push("/login");
       })
       .catch((err) => {
         setErrors({ ...err.response.data });
       });
   };
+  console.log(typeof errors);
   return (
     <FormWrapper
       className="flex-col justify align margin-t20"
@@ -42,6 +52,7 @@ const SignUpForm = () => {
         className="margin-b10"
         id="email"
         type="text"
+        autocomplete="username email"
         disabled
       />
       <TextInput
@@ -97,12 +108,16 @@ const SignUpForm = () => {
       />
       <ErrorDiv>
         {errors &&
-          errors === typeof "object" &&
+          typeof errors === "object" &&
           Object.keys(errors).map((error) => (
-            <p className="primary-color">{errors[error]}</p>
+            <p className="primary-color" key={errors[error]}>
+              {errors[error]}
+            </p>
           ))}
-        {errors && errors === typeof "string" && (
-          <p className="primary-color">{errors}</p>
+        {errors && typeof errors === "string" && (
+          <p className="primary-color" key={errors}>
+            {errors}
+          </p>
         )}
       </ErrorDiv>
     </FormWrapper>
