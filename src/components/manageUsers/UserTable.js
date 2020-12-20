@@ -17,6 +17,8 @@ import LastPageIcon from "@material-ui/icons/LastPage";
 import { TableHead, Tooltip } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
+import styled from "styled-components";
+import InviteButton from "./InviteButton";
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -95,25 +97,6 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(users) {
-  var rows = [];
-  users.forEach((user) => {
-    rows.push({
-      name: user.first ? user.first + " " + user.last : "Invited",
-      email: user.email,
-      role: user.isAdmin ? "Admin" : "User",
-      delete: (
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ),
-    });
-  });
-  return rows;
-}
-
 const useStyles2 = makeStyles({
   table: {
     minWidth: 500,
@@ -151,67 +134,116 @@ export default function UserTable() {
     setPage(0);
   };
 
-  return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="custom pagination table">
-        <TableHead>
-          <TableRow>
-            <TableCell></TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell align="left">Email</TableCell>
-            <TableCell align="center">Role</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {(rowsPerPage > 0
-            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : data
-          ).map((row) => (
-            <TableRow key={row.email}>
-              <TableCell align="center" style={{ width: 50 }}>
-                {row.delete}
-              </TableCell>
-              <TableCell
-                component="th"
-                scope="row"
-                style={{ width: "33%", minWidth: 250 }}
-              >
-                {row.name}
-              </TableCell>
-              <TableCell style={{ width: "33%", minWidth: 250 }} align="left">
-                {row.email}
-              </TableCell>
-              <TableCell style={{ width: 150 }} align="center">
-                {row.role}
-              </TableCell>
-            </TableRow>
-          ))}
+  const deleteUser = (email, index) => {
+    const url = process.env.REACT_APP_SERVER_URL;
+    const endpoint = "/api/user/remove";
+    axios
+      .post(url + endpoint, { email })
+      .then((users) => {
+        spliceUser(index);
+      })
+      .catch((err) => {
+        // Handle error
+      });
+  };
 
-          {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+  const spliceUser = (index) => {
+    var dataCopy = data;
+    dataCopy.splice(index, 1);
+    setData([...dataCopy]);
+  };
+
+  function createData(users) {
+    var rows = [];
+    users.forEach((user, index) => {
+      rows.push({
+        name: user.first ? user.first + " " + user.last : "Invited",
+        email: user.email,
+        role: user.isAdmin ? "Admin" : "User",
+      });
+    });
+    return rows;
+  }
+  console.log(data, "rerender");
+
+  return (
+    <>
+      <TableHeader className="flex-row">
+        <h2>Users</h2>
+        <InviteButton data={data} setData={setData} />
+      </TableHeader>
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="custom pagination table">
+          <TableHead>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell align="left">Email</TableCell>
+              <TableCell align="center">Role</TableCell>
             </TableRow>
-          )}
-        </TableBody>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-              colSpan={3}
-              count={data.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: { "aria-label": "rows per page" },
-                native: true,
-              }}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions}
-            />
-          </TableRow>
-        </TableFooter>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {(rowsPerPage > 0
+              ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : data
+            ).map((row, index) => (
+              <TableRow key={row.email}>
+                <TableCell align="center" style={{ width: 50 }}>
+                  <Tooltip title="Delete">
+                    <IconButton
+                      aria-label="delete"
+                      onClick={() => deleteUser(row.email, index)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
+                </TableCell>
+                <TableCell
+                  component="th"
+                  scope="row"
+                  style={{ width: "33%", minWidth: 250 }}
+                >
+                  {row.name}
+                </TableCell>
+                <TableCell style={{ width: "33%", minWidth: 250 }} align="left">
+                  {row.email}
+                </TableCell>
+                <TableCell style={{ width: 150 }} align="center">
+                  {row.role}
+                </TableCell>
+              </TableRow>
+            ))}
+
+            {emptyRows > 0 && (
+              <TableRow style={{ height: 53 * emptyRows }}>
+                <TableCell colSpan={6} />
+              </TableRow>
+            )}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                colSpan={3}
+                count={data.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                SelectProps={{
+                  inputProps: { "aria-label": "rows per page" },
+                  native: true,
+                }}
+                onChangePage={handleChangePage}
+                onChangeRowsPerPage={handleChangeRowsPerPage}
+                ActionsComponent={TablePaginationActions}
+              />
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
+
+const TableHeader = styled.div`
+  padding: 16px;
+`;

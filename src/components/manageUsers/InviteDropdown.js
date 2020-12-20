@@ -5,7 +5,7 @@ import Checkbox from "../general/Checkbox";
 import TextInput from "../general/TextInput";
 import axios from "axios";
 
-const InviteDropdown = () => {
+const InviteDropdown = ({ users, setUsers }) => {
   const [data, setData] = useState({ isAdmin: false, email: "" });
 
   // Handle email input
@@ -21,7 +21,14 @@ const InviteDropdown = () => {
     axios
       .post(url + endpoint, data)
       .then((res) => {
-        console.log(res);
+        setUsers([
+          ...users,
+          {
+            name: "Invited",
+            email: data.email,
+            role: data.isAdmin ? "Admin" : "User",
+          },
+        ]);
       })
       .catch(function (error) {
         console.log(error);

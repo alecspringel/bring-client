@@ -1,14 +1,13 @@
-import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../general/Button";
 import Dropdown from "../general/dropdown/Dropdown";
 import InviteDropdown from "./InviteDropdown";
 
-const InviteButton = () => {
+const InviteButton = ({ data, setData }) => {
   return (
     <InviteWrapper>
-      <Dropdown content={<InviteDropdown />}>
+      <Dropdown content={<InviteDropdown users={data} setUsers={setData} />}>
         <Button className="button dark-grey-btn" label="Invite" />
       </Dropdown>
     </InviteWrapper>
