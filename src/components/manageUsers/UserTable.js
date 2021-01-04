@@ -15,7 +15,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import axios from "axios";
 import styled from "styled-components";
 import InviteButton from "./InviteButton";
-import TablePaginationActions from "./TablePaginationActions";
+import TablePaginationActions from "../general/table/TablePaginationActions";
 
 const useStyles2 = makeStyles({
   table: {
@@ -86,7 +86,7 @@ export default function UserTable() {
   };
 
   return (
-    <>
+    <Wrapper>
       <TableHeader className="flex-row">
         <h2>Users</h2>
         <InviteButton data={data} setData={setData} />
@@ -159,9 +159,13 @@ export default function UserTable() {
           </TableFooter>
         </Table>
       </TableContainer>
-    </>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  margin-bottom: 40px;
+`;
 
 const TableHeader = styled.div`
   padding: 16px;
