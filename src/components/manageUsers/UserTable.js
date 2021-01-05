@@ -57,10 +57,6 @@ export default function UserTable() {
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
@@ -142,7 +138,7 @@ export default function UserTable() {
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25]}
                 colSpan={3}
                 count={data.length}
                 rowsPerPage={rowsPerPage}
@@ -151,7 +147,7 @@ export default function UserTable() {
                   inputProps: { "aria-label": "rows per page" },
                   native: true,
                 }}
-                onChangePage={handleChangePage}
+                onChangePage={setPage}
                 onChangeRowsPerPage={handleChangeRowsPerPage}
                 ActionsComponent={TablePaginationActions}
               />

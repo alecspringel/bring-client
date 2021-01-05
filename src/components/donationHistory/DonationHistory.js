@@ -23,63 +23,70 @@ const useStyles = makeStyles({
 
 const DonationHistory = () => {
   const classes = useStyles();
-  const [donations, setDonations] = useState([]);
+  const [donations, setDonations] = useState({ data: [], count: 0 });
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
 
   useEffect(() => {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/resolved";
     axios
-      .get(url + endpoint)
+      .get(url + endpoint, { params: { skip: page * rowsPerPage, limit: rowsPerPage } })
       .then((res) => {
         console.log(res);
-        setDonations(res.data);
+        setDonations({ data: res.data.data, count: res.data.count });
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [page, rowsPerPage]);
+
   return (
     <div className="content container margin-t20">
       <h2 className="margin-b20">Donation History</h2>
-      <TableContainer component={Paper}>
-        <Table className={classes.table} aria-label="custom pagination table">
-          <TableHead>
-            <TableRow>
-              <TableCell></TableCell>
-              <TableCell>Confirmation #</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Item Name</TableCell>
-              <TableCell align="center">Response</TableCell>
-              <TableCell align="center">Photos</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {donations.map((row, index) => (
-              <DropdownRow row={row} />
-            ))}
-          </TableBody>
-          <TableFooter>
-            <TableRow>
-              <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                colSpan={3}
-                count={donations.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                SelectProps={{
-                  inputProps: { "aria-label": "rows per page" },
-                  native: true,
-                }}
-                // onChangePage={handleChangePage}
-                // onChangeRowsPerPage={handleChangeRowsPerPage}
-                ActionsComponent={TablePaginationActions}
-              />
-            </TableRow>
-          </TableFooter>
-        </Table>
-      </TableContainer>
+      <div style={{ marginBottom: 40 }}>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="custom pagination table">
+            <TableHead>
+              <TableRow>
+                <TableCell></TableCell>
+                <TableCell>Confirmation #</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Item Name</TableCell>
+                <TableCell align="center">Response</TableCell>
+                <TableCell align="center">Photos</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {donations &&
+                donations.data.map((row, index) => <DropdownRow row={row} />)}
+            </TableBody>
+            <TableFooter>
+              <TableRow>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, 50]}
+                  colSpan={3}
+                  count={donations && donations.count}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: { "aria-label": "rows per page" },
+                    native: true,
+                  }}
+                  onChangePage={setPage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions}
+                />
+              </TableRow>
+            </TableFooter>
+          </Table>
+        </TableContainer>
+      </div>
     </div>
   );
 };

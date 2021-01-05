@@ -19,7 +19,7 @@ const DropdownRow = ({ row }) => {
     <>
       <TableRow key={row.email}>
         <TableCell style={{ minWidth: 30, width: "5%" }}>
-          <Tooltip title="More">
+          <Tooltip title={isOpen ? "Less" : "More"}>
             <IconButton
               aria-label="More info"
               onClick={() => toggleOpen(!isOpen)}
@@ -28,7 +28,7 @@ const DropdownRow = ({ row }) => {
             </IconButton>
           </Tooltip>
         </TableCell>
-        <TableCell style={{ minWidth: 140, width: "15%" }}>13AC36</TableCell>
+        <TableCell style={{ minWidth: 140, width: "15%" }}>{row._id}</TableCell>
         <TableCell
           component="th"
           scope="row"
@@ -77,7 +77,9 @@ const DropdownRow = ({ row }) => {
                       {new Date(row.createdDate).toDateString()}
                     </TableCell>
                     <TableCell>{row.staffResponder.name}</TableCell>
-                    <TableCell>{row.respondedDate}</TableCell>
+                    <TableCell>
+                      {new Date(row.respondedDate).toDateString()}
+                    </TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

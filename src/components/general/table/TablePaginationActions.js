@@ -20,19 +20,19 @@ export default function TablePaginationActions(props) {
   const { count, page, rowsPerPage, onChangePage } = props;
 
   const handleFirstPageButtonClick = (event) => {
-    onChangePage(event, 0);
+    onChangePage(0);
   };
 
   const handleBackButtonClick = (event) => {
-    onChangePage(event, page - 1);
+    onChangePage(page - 1);
   };
 
   const handleNextButtonClick = (event) => {
-    onChangePage(event, page + 1);
+    onChangePage(page + 1);
   };
 
   const handleLastPageButtonClick = (event) => {
-    onChangePage(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+    onChangePage(Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 
   return (
