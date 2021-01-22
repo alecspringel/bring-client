@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { UserContext } from "../context/UserProvider";
+import { UserContext, UserDispatchContext } from "../context/UserProvider";
 import AdminSignUp from "./finishSignUp/AdminSignUp";
 
 // We check if the user has a first name to determine if they
@@ -8,6 +8,13 @@ import AdminSignUp from "./finishSignUp/AdminSignUp";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const user = useContext(UserContext);
+  const setUser = useContext(UserDispatchContext);
+
+  // Check if token is expired
+  if (user && Date.now() >= user.exp * 1000) {
+    setUser(false);
+  }
+
   return (
     <Route
       {...rest}

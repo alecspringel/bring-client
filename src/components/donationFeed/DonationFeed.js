@@ -43,10 +43,7 @@ class DonationFeed extends Component {
         );
       })
       .catch((err) => {
-        if (err.response.status === 403) {
-          localStorage.removeItem("bringToken");
-          this.props.history.push("/login");
-        }
+        // Handle request error
       });
   }
 
