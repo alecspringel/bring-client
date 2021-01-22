@@ -21,6 +21,9 @@ const useStyles2 = makeStyles({
   table: {
     minWidth: 500,
   },
+  head: {
+    backgroundColor: "#f1f1f1",
+  },
 });
 
 function createData(users) {
@@ -89,7 +92,7 @@ export default function UserTable() {
       </TableHeader>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="custom pagination table">
-          <TableHead>
+          <TableHead className={classes.head}>
             <TableRow>
               <TableCell></TableCell>
               <TableCell>Name</TableCell>

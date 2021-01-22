@@ -19,6 +19,9 @@ const useStyles = makeStyles({
   table: {
     minWidth: 500,
   },
+  head: {
+    backgroundColor: "#f1f1f1",
+  },
 });
 
 const DonationHistory = () => {
@@ -36,7 +39,9 @@ const DonationHistory = () => {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/resolved";
     axios
-      .get(url + endpoint, { params: { skip: page * rowsPerPage, limit: rowsPerPage } })
+      .get(url + endpoint, {
+        params: { skip: page * rowsPerPage, limit: rowsPerPage },
+      })
       .then((res) => {
         console.log(res);
         setDonations({ data: res.data.data, count: res.data.count });
@@ -53,7 +58,7 @@ const DonationHistory = () => {
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="custom pagination table">
             <TableHead>
-              <TableRow>
+              <TableRow className={classes.head}>
                 <TableCell></TableCell>
                 <TableCell>Confirmation #</TableCell>
                 <TableCell>Name</TableCell>
