@@ -7,11 +7,7 @@ import AdminHeader from "./admin/AdminHeader";
 
 const Header = () => {
   const location = useLocation();
-  if (
-    location.pathname === "/" ||
-    location.pathname === "/login" ||
-    location.pathname === "/login/reset"
-  ) {
+  if (location.pathname === "/" || location.pathname.slice(0, 6) === "/login") {
     return (
       <>
         <TopHead />

@@ -14,6 +14,7 @@ import DonationHistory from "./components/donationHistory/DonationHistory";
 import ManageUsers from "./components/manageUsers/ManageUsers";
 import AdminSignUp from "./components/finishSignUp/AdminSignUp";
 import ResetLink from "./components/resetLink/ResetLink";
+import ResetPassword from "./components/resetPassword/ResetPassword";
 // import { UserContext, UserDispatchContext } from "./context/UserProvider";
 
 class App extends Component {
@@ -46,6 +47,9 @@ class App extends Component {
               </Route>
               <Route path="/login/reset" exact>
                 <ResetLink />
+              </Route>
+              <Route path="/login/reset/password" exact>
+                <ResetPassword />
               </Route>
             </Switch>
             <Footer signOut={this.signOut} />
