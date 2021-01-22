@@ -14,6 +14,7 @@ import axios from "axios";
 import styled from "styled-components";
 import TablePaginationActions from "../general/table/TablePaginationActions";
 import DropdownRow from "./DropdownRow";
+import SelectorTextInput from "../general/SelectorTextInput";
 
 const useStyles = makeStyles({
   table: {
@@ -29,31 +30,86 @@ const DonationHistory = () => {
   const [donations, setDonations] = useState({ data: [], count: 0 });
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [search, setSearch] = useState({
+    typingTimeout: 0,
+    search: "",
+    field: "_id",
+  });
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
+  const handleSearchCategory = (option) => {
+    setSearch({
+      ...search,
+      field: option.value,
+    });
+  };
+
+  const handleSearch = (e) => {
+    if (search.typingTimeout) {
+      clearTimeout(search.typingTimeout);
+    }
+
+    setSearch({
+      ...search,
+      typingTimeout: setTimeout(function () {
+        setSearch({
+          ...search,
+          search: e.target.value,
+        });
+      }, 1000),
+    });
+  };
+
   useEffect(() => {
+    var params = { skip: page * rowsPerPage, limit: rowsPerPage };
+    // If a search is in place, send search
+    if (search.search !== "") {
+      params.search = search.search;
+      params.searchField = search.field;
+    }
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/resolved";
     axios
       .get(url + endpoint, {
-        params: { skip: page * rowsPerPage, limit: rowsPerPage },
+        params,
       })
       .then((res) => {
         console.log(res);
+        if (search.search !== "") {
+          setPage(0);
+        }
         setDonations({ data: res.data.data, count: res.data.count });
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [page, rowsPerPage]);
+  }, [page, rowsPerPage, search.search, search.field]);
 
   return (
     <div className="content container margin-t20">
-      <h2 className="margin-b20">Donation History</h2>
+      <div>
+        <h2 className="margin-b20" style={{ display: "inline-block" }}>
+          Donation History
+        </h2>
+        <div style={{ float: "right", width: 350 }}>
+          <SelectorTextInput
+            selectorWidth="350px"
+            placeholder="Search"
+            options={[
+              { label: "Confirmation #", value: "_id" },
+              { label: "First Name", value: "first" },
+              { label: "Last Name", value: "last" },
+              { label: "Item", value: "itemName" },
+            ]}
+            onTextChange={handleSearch}
+            onSelectorChange={handleSearchCategory}
+          />
+        </div>
+      </div>
       <div style={{ marginBottom: 40 }}>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="custom pagination table">
