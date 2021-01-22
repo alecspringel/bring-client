@@ -32,7 +32,7 @@ const SendLogin = ({ email, password }) => {
   return (
     <input
       className="button primary-btn"
-      label="Sign In"
+      value="Sign In"
       type="submit"
       onClick={onSubmit}
     />

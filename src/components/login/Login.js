@@ -1,6 +1,6 @@
 import React, { Component, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import TextInput from "../general/TextInput";
 import { UserContext } from "../../context/UserProvider";
 import SendLogin from "./SendLogin";
@@ -34,7 +34,8 @@ const Login = () => {
   return (
     <div className="content container margin-t20">
       <Background className="flex-row">
-        <FormWrapper className="flex-col text-center">
+        <FormWrapper className="flex-col text-center margin-t20">
+          <Icon src={require("../../assets/login.svg")} />
           <h2 className="margin-tb20">Admin Login</h2>
           <TextInput
             placeholder="Email"
@@ -54,6 +55,9 @@ const Login = () => {
             aria-label="password"
           />
           <SendLogin email={data.email} password={data.password} />
+          <div className="margin-t20">
+            <ForgotPassword to="/login/reset">Forgot password?</ForgotPassword>
+          </div>
         </FormWrapper>
       </Background>
     </div>
@@ -65,11 +69,26 @@ export default withRouter(Login);
 const Background = styled.div`
   align-items: center;
   justify-content: center;
-  height: 300px;
-  width: 300px;
+  width: 360px;
   margin: auto; ;
 `;
 
 const FormWrapper = styled.form`
   width: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #cecece;
+  border-radius: 6px;
+`;
+
+const ForgotPassword = styled(Link)`
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const Icon = styled.img`
+  height: 44px;
+  margin: 5px 0;
 `;

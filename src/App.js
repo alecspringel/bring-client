@@ -13,6 +13,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import DonationHistory from "./components/donationHistory/DonationHistory";
 import ManageUsers from "./components/manageUsers/ManageUsers";
 import AdminSignUp from "./components/finishSignUp/AdminSignUp";
+import ResetLink from "./components/resetLink/ResetLink";
 // import { UserContext, UserDispatchContext } from "./context/UserProvider";
 
 class App extends Component {
@@ -40,8 +41,11 @@ class App extends Component {
               <Route exact path="/admin/signup">
                 <AdminSignUp />
               </Route>
-              <Route path="/login">
-                <Login exact />
+              <Route path="/login" exact>
+                <Login />
+              </Route>
+              <Route path="/login/reset" exact>
+                <ResetLink />
               </Route>
             </Switch>
             <Footer signOut={this.signOut} />

@@ -56,6 +56,10 @@ ul {
   margin: 0;
 }
 
+a {
+  cursor: pointer;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -219,6 +223,10 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-light {
