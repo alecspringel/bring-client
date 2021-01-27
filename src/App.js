@@ -15,6 +15,7 @@ import ManageUsers from "./components/manageUsers/ManageUsers";
 import AdminSignUp from "./components/finishSignUp/AdminSignUp";
 import ResetLink from "./components/resetLink/ResetLink";
 import ResetPassword from "./components/resetPassword/ResetPassword";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 // import { UserContext, UserDispatchContext } from "./context/UserProvider";
 
 class App extends Component {
@@ -48,7 +49,7 @@ class App extends Component {
               <Route path="/login/reset" exact>
                 <ResetLink />
               </Route>
-              <Route path="/login/reset/password" exact>
+              <Route path="/login/reset/password/:token" exact>
                 <ResetPassword />
               </Route>
             </Switch>

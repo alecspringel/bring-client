@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import TextInput from "../general/TextInput";
 import SendNewPassword from "./SendNewPassword";
 
-const ResetPassword = () => {
+const ResetPassword = ({ ...props }) => {
+  let { token } = useParams();
+  console.log(token);
   return (
     <div className="content container margin-t20">
       <Background className="flex-row">
