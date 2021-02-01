@@ -41,7 +41,9 @@ const ResetLink = () => {
             toggleLoading={toggleLoading}
             loading={form.loading}
           />
-          <ResponseDiv className="flex-row align">{form.response}</ResponseDiv>
+          <ResponseDiv className="flex-row align justify">
+            {form.response}
+          </ResponseDiv>
           <ForgotPassword to="/login" className="margin-t20">
             Back to login
           </ForgotPassword>

@@ -6,7 +6,12 @@ import SendNewPassword from "./SendNewPassword";
 
 const ResetPassword = ({ ...props }) => {
   let { tokenId, hashedId } = useParams();
-  const [form, setForm] = useState({ password: "", confirm: "" });
+  const [form, setForm] = useState({
+    password: "",
+    confirm: "",
+    msg: "",
+    loading: false,
+  });
 
   const handleChange = (e) => {
     setForm({
@@ -14,6 +19,7 @@ const ResetPassword = ({ ...props }) => {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div className="content container margin-t20">
       <Background className="flex-row">
@@ -27,15 +33,29 @@ const ResetPassword = ({ ...props }) => {
             placeholder="Password"
             className="margin-b10"
             name="password"
+            type="password"
+            loading={form.loading}
             onChange={handleChange}
+            value={form.password}
           />
           <TextInput
             placeholder="Confirm Password"
             className="margin-b10"
             name="confirm"
+            type="password"
+            loading={form.loading}
             onChange={handleChange}
+            value={form.confirm}
           />
-          <SendNewPassword tokenId={tokenId} hashedId={hashedId} form={form} />
+          <SendNewPassword
+            tokenId={tokenId}
+            hashedId={hashedId}
+            form={form}
+            setForm={setForm}
+          />
+          <ResponseDiv className="flex-row align justify">
+            {form.msg}
+          </ResponseDiv>
           <ForgotPassword to="/login" className="margin-t20">
             Back to login
           </ForgotPassword>
@@ -71,4 +91,9 @@ const ForgotPassword = styled(Link)`
   &:hover {
     opacity: 1;
   }
+`;
+
+const ResponseDiv = styled.div`
+  height: 60px;
+  font-size: 14px;
 `;

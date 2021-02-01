@@ -14,16 +14,17 @@ const SendLogin = ({ email, setRes, toggleLoading, loading }) => {
       const userData = {
         email: email,
       };
-      post(url + endpoint, userData).then((res) => {
-        toggleLoading(false);
-        if (res.status === 200) {
+      post(url + endpoint, userData)
+        .then(() => {
+          toggleLoading(false);
           setRes("An email will be sent to finish resetting your password.");
-        } else {
+        })
+        .catch(() => {
+          toggleLoading(false);
           setRes(
             "There was an issue while resetting your password. Please try again."
           );
-        }
-      });
+        });
     }, 1000);
   };
 
@@ -32,7 +33,7 @@ const SendLogin = ({ email, setRes, toggleLoading, loading }) => {
       className="button primary-btn"
       value="Send Reset Link"
       type="submit"
-      onClick={!loading && onSubmit}
+      onClick={!loading ? onSubmit : undefined}
     />
   );
 };
