@@ -20,11 +20,11 @@ const Footer = (props) => {
 
   return (
     <Foot>
-      <div
+      <Flex
         className="container flex-row"
         style={{ justifyContent: "space-between" }}
       >
-        <h3 className="coolvetica text-white">
+        <PaddedH3 className="coolvetica text-white">
           BRING
           <br />
           4446 franklin boulevard
@@ -33,8 +33,8 @@ const Footer = (props) => {
           <br />
           (541) 746-3023
           <br />
-        </h3>
-        <h3 className="coolvetica text-white">
+        </PaddedH3>
+        <PaddedH3 className="coolvetica text-white">
           admin hours: monday-friday 9 a.m. – 5 p.m.
           <br />
           store hours: monday-saturday 9 a.m. – 5 p.m. and sunday 10 a.m. – 5
@@ -44,8 +44,8 @@ const Footer = (props) => {
           <br />
           (closed on tuesdays)
           <br />
-        </h3>
-        <h3>
+        </PaddedH3>
+        <PaddedH3>
           <Link to="/" className="coolvetica text-white underline">
             donate
           </Link>
@@ -63,8 +63,8 @@ const Footer = (props) => {
               sign out
             </span>
           )}
-        </h3>
-      </div>
+        </PaddedH3>
+      </Flex>
     </Foot>
   );
 };
@@ -77,4 +77,14 @@ const Foot = styled.div`
   padding: 40px 0;
   position: absolute;
   bottom: 0;
+`;
+
+const PaddedH3 = styled.h3`
+  padding: 5px 5px;
+`;
+
+const Flex = styled.div`
+  @media (max-width: 562px) {
+    flex-direction: column;
+  }
 `;

@@ -11,7 +11,7 @@ media queries */
 }
 
 .nav-list {
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 /* copied from BRING recycling website */

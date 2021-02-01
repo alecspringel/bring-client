@@ -1,25 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import MobileNav from "../mobileNav/MobileNav";
+import MobileOption from "../mobileNav/MobileOption";
 import ProfileDropdown from "./ProfileDropdown";
 
 const Nav = () => {
   return (
     <div>
       <Navigation>
-        <div className="container">
-          <ul className="flex-row justify">
-            <NavItem>
+        <Mobile>
+          <MobileNav height="104px">
+            <MobileOption>
               <Link to="/admin">Pending</Link>
-            </NavItem>
-            <NavItem>
+            </MobileOption>
+            <MobileOption>
               <Link to="/admin/history">History</Link>
-            </NavItem>
-          </ul>
-          <RightControls>
-            <ProfileDropdown />
-          </RightControls>
-        </div>
+            </MobileOption>
+          </MobileNav>
+        </Mobile>
+        <DesktopNav>
+          <div className="container">
+            <ul className="flex-row justify">
+              <NavItem>
+                <Link to="/admin">Pending</Link>
+              </NavItem>
+              <NavItem>
+                <Link to="/admin/history">History</Link>
+              </NavItem>
+            </ul>
+          </div>
+        </DesktopNav>
+        <RightControls>
+          <ProfileDropdown />
+        </RightControls>
       </Navigation>
     </div>
   );
@@ -27,13 +41,23 @@ const Nav = () => {
 
 export default Nav;
 
+const DesktopNav = styled.div`
+  @media (max-width: 550px) {
+    display: none;
+  }
+`;
+
+const Mobile = styled.div`
+  display: none;
+  @media (max-width: 550px) {
+    display: block;
+  }
+`;
+
 const Navigation = styled.nav`
   padding: 8px 16px;
   box-shadow: 2px 1px 3px #00000033;
-
-  @media (max-width: 848px) {
-    display: none;
-  }
+  position: relative;
 `;
 
 const NavItem = styled.li`
@@ -56,4 +80,7 @@ const RightControls = styled.div`
   right: 0;
   top: 0;
   height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 15px;
 `;

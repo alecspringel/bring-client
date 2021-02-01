@@ -9,20 +9,6 @@ button:focus {
   outline: none;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-}
-
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background: #f6f6f6;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #e4e4e4;
-}
-
 body {
   margin: 0;
   font-family: "Lato", "Roboto", "Ubuntu", "Helvetica Neue", sans-serif;
@@ -83,12 +69,18 @@ a {
 }
 
 .content {
-  padding-bottom: 168px;
+  padding-bottom: 268px;
 }
 
 @media (max-width: 900px) {
   .content {
     padding-bottom: 300px;
+  }
+}
+
+@media (max-width: 562px) {
+  .content {
+    padding-bottom: 450px;
   }
 }
 
