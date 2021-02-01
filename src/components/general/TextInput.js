@@ -5,7 +5,11 @@ import Loader from "react-loader-spinner";
 const TextInput = ({ className, style, inputStyle, ...rest }) => {
   return (
     <div className={className} style={{ position: "relative", ...style }}>
-      <Input {...rest} style={inputStyle} />
+      <Input
+        {...rest}
+        style={inputStyle}
+        readOnly={rest.loading || rest.disabled}
+      />
       {rest.loading && (
         <Overlay>
           <Loader type="ThreeDots" color="#00000060" height={30} width={30} />

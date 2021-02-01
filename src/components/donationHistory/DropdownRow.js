@@ -12,11 +12,16 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import IconButton from "@material-ui/core/IconButton";
 import { Tooltip } from "@material-ui/core";
+import ImageFocus from "../general/ImageFocus";
 
 const DropdownRow = ({ row }) => {
   const [isOpen, toggleOpen] = useState(false);
+  const [viewImages, toggleImages] = useState(false);
   return (
     <>
+      {viewImages && (
+        <ImageFocus images={row.imageUrls} close={() => toggleImages(false)} />
+      )}
       <TableRow key={row.email}>
         <TableCell style={{ minWidth: 30, width: "5%" }}>
           <Tooltip title={isOpen ? "Less" : "More"}>
@@ -44,10 +49,7 @@ const DropdownRow = ({ row }) => {
         </TableCell>
         <TableCell align="center" style={{ width: 50 }}>
           <Tooltip title="View">
-            <IconButton
-              aria-label="view"
-              // onClick={() => deleteUser(row.email, index)}
-            >
+            <IconButton aria-label="view" onClick={() => toggleImages(true)}>
               <ViewIcon />
             </IconButton>
           </Tooltip>
