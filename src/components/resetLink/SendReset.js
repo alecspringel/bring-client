@@ -10,7 +10,7 @@ const SendLogin = ({ email, setRes, toggleLoading, loading }) => {
     toggleLoading(true);
     setTimeout(() => {
       const url = process.env.REACT_APP_SERVER_URL;
-      const endpoint = "/api/user/resetpassword";
+      const endpoint = "/api/user/forgotpassword";
       const userData = {
         email: email,
       };

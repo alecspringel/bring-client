@@ -49,7 +49,7 @@ class App extends Component {
               <Route path="/login/reset" exact>
                 <ResetLink />
               </Route>
-              <Route path="/login/reset/password/:token" exact>
+              <Route path="/login/reset/password/:tokenId/:hashedId" exact>
                 <ResetPassword />
               </Route>
             </Switch>
