@@ -34,6 +34,7 @@ const DonationHistory = () => {
     typingTimeout: 0,
     search: "",
     field: "_id",
+    lastSearch: "", // The last search text that was queried
   });
 
   const handleChangeRowsPerPage = (event) => {
@@ -79,9 +80,12 @@ const DonationHistory = () => {
       })
       .then((res) => {
         console.log(res);
-        if (search.search !== "") {
+        // If the user is not on first page and searches,
+        // user should be returned to first page
+        if (search.search !== search.lastSearch) {
           setPage(0);
         }
+        setSearch({ ...search, lastSearch: search.search });
         setDonations({ data: res.data.data, count: res.data.count });
       })
       .catch((err) => {
