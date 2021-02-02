@@ -9,18 +9,18 @@ const Nav = () => {
   return (
     <div>
       <Navigation>
-        <Mobile>
-          <MobileNav height="104px">
-            <MobileOption>
-              <Link to="/admin">Pending</Link>
-            </MobileOption>
-            <MobileOption>
-              <Link to="/admin/history">History</Link>
-            </MobileOption>
-          </MobileNav>
-        </Mobile>
-        <DesktopNav>
-          <div className="container">
+        <div className="container">
+          <Mobile>
+            <MobileNav height="104px">
+              <MobileOption>
+                <Link to="/admin">Pending</Link>
+              </MobileOption>
+              <MobileOption>
+                <Link to="/admin/history">History</Link>
+              </MobileOption>
+            </MobileNav>
+          </Mobile>
+          <DesktopNav>
             <ul className="flex-row justify">
               <NavItem>
                 <Link to="/admin">Pending</Link>
@@ -29,11 +29,11 @@ const Nav = () => {
                 <Link to="/admin/history">History</Link>
               </NavItem>
             </ul>
-          </div>
-        </DesktopNav>
-        <RightControls>
-          <ProfileDropdown />
-        </RightControls>
+          </DesktopNav>
+          <RightControls>
+            <ProfileDropdown />
+          </RightControls>
+        </div>
       </Navigation>
     </div>
   );
