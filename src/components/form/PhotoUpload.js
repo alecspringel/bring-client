@@ -1,81 +1,69 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ImageGallery from "../general/ImageGallery";
 import TextInput from "../general/TextInput";
 import TextArea from "../general/TextArea";
 import ImgIcon from "../../assets/img-icon.svg";
 
-class PhotoUpload extends Component {
-  render() {
-    const {
-      files,
-      handleFiles,
-      handleChange,
-      itemName,
-      description,
-      errors,
-    } = this.props;
-
-    // Displayed in gallery
-    var images = [];
-
-    if (files) {
-      Array.from(files).forEach((file) => {
-        const url = URL.createObjectURL(file);
-        images.push(url);
-      });
-    }
-
-    return (
-      <>
-        <Background>
-          <InvisibleFile
-            type="file"
-            name="files"
-            multiple
-            onChange={handleFiles}
-          />
-          {images.length === 0 ? (
-            <div className="text-center">
-              <Icon src={ImgIcon} />
-              <h3 style={{ color: "#000", marginBottom: 5 }}>Upload Images</h3>
-              <p>Select up to 5 images for us to review</p>
-              <UploadBtn className="button margin-t20">Choose Files</UploadBtn>
-            </div>
-          ) : (
-            <PhotoWrapper className="text-center">
-              <ImageGallery images={images} />
-              <ChangeUpload className="margin-t20" onClick={this.props.removeFiles}>
-                Remove files
-              </ChangeUpload>
-            </PhotoWrapper>
-          )}
-        </Background>
-        <TextInput
-          name="itemName"
-          value={itemName}
-          onChange={handleChange}
-          className="margin-t20"
-          placeholder="Item Name"
-          style={{ marginBottom: 15 }}
-          aria-label="item name"
-          error={errors.itemName}
-          required
+const PhotoUpload = ({
+  files,
+  fileUrls,
+  handleFiles,
+  handleChange,
+  itemName,
+  description,
+  errors,
+  removeFiles,
+}) => {
+  return (
+    <>
+      <Background>
+        <InvisibleFile
+          type="file"
+          name="files"
+          multiple
+          onChange={handleFiles}
         />
-        <TextArea
-          name="description"
-          value={description}
-          onChange={handleChange}
-          placeholder="Description (optional)"
-          type="text"
-          rows="3"
-          style={{ marginBottom: 15 }}
-          aria-label="description"
-        />
-      </>
-    );
-  }
-}
+        {fileUrls && fileUrls.length === 0 ? (
+          <div className="text-center">
+            <Icon src={ImgIcon} />
+            <h3 style={{ color: "#000", marginBottom: 5 }}>Upload Images</h3>
+            <p>Select up to 5 images for us to review</p>
+            <UploadBtn className="button margin-t20">Choose Files</UploadBtn>
+          </div>
+        ) : (
+          <PhotoWrapper className="text-center">
+            <ImageGallery images={fileUrls} />
+            <ChangeUpload className="margin-t20" onClick={removeFiles}>
+              Remove files
+            </ChangeUpload>
+          </PhotoWrapper>
+        )}
+      </Background>
+      <TextInput
+        name="itemName"
+        value={itemName}
+        onChange={handleChange}
+        className="margin-t20"
+        placeholder="Item Name"
+        style={{ marginBottom: 15 }}
+        aria-label="item name"
+        error={errors.itemName}
+        required
+      />
+      <TextArea
+        name="description"
+        value={description}
+        onChange={handleChange}
+        placeholder="Description (optional)"
+        type="text"
+        rows="3"
+        style={{ marginBottom: 15 }}
+        aria-label="description"
+      />
+    </>
+  );
+};
 
 export default PhotoUpload;
 

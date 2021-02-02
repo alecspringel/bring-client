@@ -11,6 +11,7 @@ class Inputs extends Component {
     super(props);
     this.state = {
       files: null,
+      fileUrls: [],
       first: "",
       last: "",
       email: "",
@@ -22,7 +23,7 @@ class Inputs extends Component {
       // Success Modal
       showSuccess: false,
       errorMsgs: [],
-      errors: {}
+      errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -34,14 +35,14 @@ class Inputs extends Component {
   }
 
   setError(errors) {
-    var errorMsgs = []
-    for(var key in errors) {
+    var errorMsgs = [];
+    for (var key in errors) {
       errorMsgs.push(errors[key]);
     }
     this.setState({
       errors,
-      errorMsgs
-    })
+      errorMsgs,
+    });
   }
 
   // Handles changes from input fields
@@ -64,13 +65,22 @@ class Inputs extends Component {
 
   removeFiles() {
     this.setState({
-      files: null
-    })
+      files: null,
+      fileUrls: [],
+    });
   }
 
   handleFiles(e) {
+    var images = [];
+    if (e.target.files) {
+      Array.from(e.target.files).forEach((file) => {
+        const url = URL.createObjectURL(file);
+        images.push(url);
+      });
+    }
     this.setState({
       files: e.target.files,
+      fileUrls: images,
     });
   }
 
@@ -83,6 +93,7 @@ class Inputs extends Component {
   submitMore() {
     this.setState({
       files: null,
+      fileUrls: [],
       showSuccess: false,
       itemName: "",
       description: "",
@@ -92,11 +103,14 @@ class Inputs extends Component {
   render() {
     return (
       <>
-        {this.state.showSuccess && <SuccessMessage submitMore={this.submitMore}/>}
+        {this.state.showSuccess && (
+          <SuccessMessage submitMore={this.submitMore} />
+        )}
         <FormWrapper className="flex-row">
           <ImageSection>
             <PhotoUpload
               files={this.state.files}
+              fileUrls={this.state.fileUrls}
               handleChange={this.handleChange}
               handleFiles={this.handleFiles}
               itemName={this.state.itemName}
@@ -178,7 +192,7 @@ class Inputs extends Component {
                   onClick={this.handleCheckbox}
                 />{" "}
                 <span className="noselect" style={{ marginLeft: 7 }}>
-                <label htmlFor="preferPhone">Text</label>
+                  <label htmlFor="preferPhone">Text</label>
                 </span>
               </div>
             </CheckboxDiv>
@@ -196,9 +210,12 @@ class Inputs extends Component {
               toggleSuccess={this.toggleSuccess}
             />
             <div className="margin-t10">
-            {this.state.errorMsgs && this.state.errorMsgs.map((error) => 
-              <div key={error}><p className="primary-color">{error}</p></div>
-            )}
+              {this.state.errorMsgs &&
+                this.state.errorMsgs.map((error) => (
+                  <div key={error}>
+                    <p className="primary-color">{error}</p>
+                  </div>
+                ))}
             </div>
           </FormSection>
         </FormWrapper>

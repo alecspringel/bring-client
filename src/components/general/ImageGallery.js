@@ -7,11 +7,14 @@ class ImageGallery extends Component {
   constructor(props) {
     super(props);
     var primary = null;
-    if (props.images.length > 0) {
+    var images = props.images;
+    if (props.images && props.images.length > 0) {
       primary = props.images[0];
+    } else {
+      images = [];
     }
     this.state = {
-      images: props.images,
+      images: images,
       primary,
       current: 0,
       enlarge: false,

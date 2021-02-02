@@ -3,6 +3,9 @@
 :before {
   box-sizing: border-box;
   color: #5c5b5a;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 button:focus {
