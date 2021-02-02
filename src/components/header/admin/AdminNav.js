@@ -55,7 +55,7 @@ const Mobile = styled.div`
 `;
 
 const Navigation = styled.nav`
-  padding: 8px 16px;
+  padding: 8px 0;
   box-shadow: 2px 1px 3px #00000033;
   position: relative;
 `;
