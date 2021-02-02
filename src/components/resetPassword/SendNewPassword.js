@@ -49,7 +49,13 @@ const SendNewPassword = ({ form, tokenId, hashedId, setForm }) => {
       className="button primary-btn"
       value="Update Password"
       type="submit"
-      onClick={!form.loading ? onSubmit : undefined}
+      onClick={
+        !form.loading
+          ? onSubmit
+          : (e) => {
+              e.preventDefault();
+            }
+      }
     />
   );
 };

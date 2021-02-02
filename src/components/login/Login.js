@@ -19,16 +19,30 @@ const Login = () => {
     email: "",
     password: "",
     errors: {},
+    loading: false,
   });
 
   const onChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  const handleData = (name, value) => {
+    setData({ ...data, [name]: value });
+  };
+
   // Wait for context to determine if a token is stored,
   // if so, don't render login page, just redirect.
   if (user !== false) {
     return null;
+  }
+
+  var errors = [];
+  if (typeof data.errors === "string") {
+    errors.push(data.errors);
+  } else {
+    for (var key in data.errors) {
+      errors.push(data.errors[key]);
+    }
   }
 
   return (
@@ -44,6 +58,8 @@ const Login = () => {
             value={data.email}
             onChange={onChange}
             aria-label="email"
+            error={data.errors.email}
+            loading={data.loading}
           />
           <TextInput
             placeholder="Password"
@@ -53,8 +69,23 @@ const Login = () => {
             value={data.password}
             onChange={onChange}
             aria-label="password"
+            error={data.errors.password}
+            loading={data.loading}
           />
-          <SendLogin email={data.email} password={data.password} />
+          <SendLogin
+            email={data.email}
+            password={data.password}
+            handleData={handleData}
+            loading={data.loading}
+          />
+          <div className="margin-t20">
+            {errors.length > 0 &&
+              errors.map((error) => (
+                <p className="primary-color" key={error}>
+                  {error}
+                </p>
+              ))}
+          </div>
           <div className="margin-t20">
             <ForgotPassword to="/login/reset">Forgot password?</ForgotPassword>
           </div>

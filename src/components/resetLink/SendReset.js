@@ -33,7 +33,13 @@ const SendLogin = ({ email, setRes, toggleLoading, loading }) => {
       className="button primary-btn"
       value="Send Reset Link"
       type="submit"
-      onClick={!loading ? onSubmit : undefined}
+      onClick={
+        !loading
+          ? onSubmit
+          : (e) => {
+              e.preventDefault();
+            }
+      }
     />
   );
 };
