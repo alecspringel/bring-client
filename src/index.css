@@ -241,6 +241,10 @@ a {
   display: flex;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;

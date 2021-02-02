@@ -82,6 +82,10 @@ export default ResponseSection;
 const Section = styled.section`
   flex: 0 0 450px;
   position: relative;
+  @media (max-width: 850px) {
+    height: 50%;
+    flex: 1;
+  }
 `;
 
 const ContactInfo = styled.h4`

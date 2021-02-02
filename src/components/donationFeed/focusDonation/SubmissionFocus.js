@@ -9,6 +9,10 @@ class SubmissionFocus extends Component {
       <Background onClick={this.props.close}>
         <Content className="container" onClick={(e) => e.stopPropagation()}>
           <ImageContainer>
+            <BackDiv onClick={this.props.close}>
+              <BackArrow src={require("../../../assets/exit-white.png")} />
+              Back to menu
+            </BackDiv>
             <ImageGallery images={this.props.donation.imageUrls} />
           </ImageContainer>
           <ResponseSection
@@ -22,6 +26,26 @@ class SubmissionFocus extends Component {
 }
 
 export default SubmissionFocus;
+
+const BackDiv = styled.div`
+  cursor: pointer;
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  color: white;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const BackArrow = styled.img`
+  height: 30px;
+  margin-right: 7px;
+`;
 
 const Background = styled.div`
   position: fixed;
@@ -49,10 +73,21 @@ const Content = styled.div`
   @media (max-height: 690px) {
     height: 520px;
   }
+  @media (max-height: 550px) {
+    height: 420px;
+  }
+  @media (max-width: 850px) {
+    height: 100vh;
+    flex-direction: column;
+  }
 `;
 
 const ImageContainer = styled.div`
   z-index: 1;
   flex: 1;
   box-shadow: 3px 0px 7px #0000002e;
+  position: relative;
+  @media (max-width: 850px) {
+    height: 50%;
+  }
 `;

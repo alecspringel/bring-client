@@ -95,11 +95,14 @@ const DonationHistory = () => {
 
   return (
     <div className="content container margin-t20">
-      <div>
-        <h2 className="margin-b20" style={{ display: "inline-block" }}>
+      <div className="flex-row" style={{ flexWrap: "wrap" }}>
+        <h2
+          className="margin-b20 flex-1"
+          style={{ display: "inline-block", whiteSpace: "nowrap" }}
+        >
           Donation History
         </h2>
-        <div style={{ float: "right", width: 350 }}>
+        <div style={{ width: 350 }}>
           <SelectorTextInput
             selectorWidth="350px"
             placeholder="Search"
@@ -114,7 +117,7 @@ const DonationHistory = () => {
           />
         </div>
       </div>
-      <div style={{ marginBottom: 40 }}>
+      <div style={{ marginBottom: 40, marginTop: 20 }}>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="custom pagination table">
             <TableHead>

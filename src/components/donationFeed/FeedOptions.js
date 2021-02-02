@@ -17,7 +17,9 @@ const SORT_OPTIONS = [
 const FeedOptions = (props) => {
   return (
     <Wrapper>
-      <h2 className="text-bold">Pending Donations</h2>
+      <h2 className="text-bold flex-1" style={{ whiteSpace: "nowrap" }}>
+        Pending Donations
+      </h2>
       <RightOptions>
         <div style={{ width: 200 }}>
           <Selector
@@ -37,9 +39,9 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 const RightOptions = styled.div`
-  position: absolute;
-  right: 0;
+  margin-top: 10px;
 `;
