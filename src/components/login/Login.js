@@ -5,6 +5,7 @@ import TextInput from "../general/TextInput";
 import { UserContext } from "../../context/UserProvider";
 import SendLogin from "./SendLogin";
 import { useHistory } from "react-router";
+import ErrorDiv from "../general/ErrorDiv";
 
 const Login = () => {
   const user = useContext(UserContext);
@@ -34,15 +35,6 @@ const Login = () => {
   // if so, don't render login page, just redirect.
   if (user !== false) {
     return null;
-  }
-
-  var errors = [];
-  if (typeof data.errors === "string") {
-    errors.push(data.errors);
-  } else {
-    for (var key in data.errors) {
-      errors.push(data.errors[key]);
-    }
   }
 
   return (
@@ -78,14 +70,7 @@ const Login = () => {
             handleData={handleData}
             loading={data.loading}
           />
-          <div className="margin-t20">
-            {errors.length > 0 &&
-              errors.map((error) => (
-                <p className="primary-color" key={error}>
-                  {error}
-                </p>
-              ))}
-          </div>
+          <ErrorDiv errors={data.errors} />
           <div className="margin-t20">
             <ForgotPassword to="/login/reset">Forgot password?</ForgotPassword>
           </div>

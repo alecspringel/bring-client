@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Checkbox from "../general/Checkbox";
+import ErrorDiv from "../general/ErrorDiv";
 import TextInput from "../general/TextInput";
 import PhotoUpload from "./PhotoUpload";
 import SubmitButton from "./SubmitButton";
@@ -22,7 +23,6 @@ class Inputs extends Component {
       preferPhone: false,
       // Success Modal
       showSuccess: false,
-      errorMsgs: [],
       errors: {},
     };
     this.handleChange = this.handleChange.bind(this);
@@ -35,13 +35,8 @@ class Inputs extends Component {
   }
 
   setError(errors) {
-    var errorMsgs = [];
-    for (var key in errors) {
-      errorMsgs.push(errors[key]);
-    }
     this.setState({
       errors,
-      errorMsgs,
     });
   }
 
@@ -209,14 +204,7 @@ class Inputs extends Component {
               preferPhone={this.state.preferPhone}
               toggleSuccess={this.toggleSuccess}
             />
-            <div className="margin-t10">
-              {this.state.errorMsgs &&
-                this.state.errorMsgs.map((error) => (
-                  <div key={error}>
-                    <p className="primary-color">{error}</p>
-                  </div>
-                ))}
-            </div>
+            <ErrorDiv errors={this.state.errors} />
           </FormSection>
         </FormWrapper>
       </>
