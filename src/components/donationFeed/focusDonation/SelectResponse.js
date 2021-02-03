@@ -94,8 +94,8 @@ class SelectResponse extends Component {
           placeholder={this.state.shortMsg}
         />
         <DynamicTextArea
-          className="margin-t20"
-          style={{ width: "100%", height: 150 }}
+          className="margin-t20 flex-1"
+          style={{ width: "100%" }}
           placeholder={
             this.state.shortMsg === "Custom"
               ? "Enter your reply ..."

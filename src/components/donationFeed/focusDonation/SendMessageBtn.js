@@ -47,7 +47,7 @@ class SendMessageBtn extends Component {
       <Button
         label="SEND"
         className={cname}
-        style={{ position: "absolute", bottom: 60, width: "90%" }}
+        style={{ width: "100%", marginTop: 20, marginBottom: 50 }}
         onClick={this.sendResponse}
       />
     );
