@@ -1,29 +1,40 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ImageGallery from "../../general/ImageGallery";
 import ResponseSection from "./ResponseSection";
+import useWindowDimensions from "../../general/WindowDimensions";
 
-class SubmissionFocus extends Component {
-  render() {
-    return (
-      <Background onClick={this.props.close}>
-        <Content className="container" onClick={(e) => e.stopPropagation()}>
-          <ImageContainer>
-            <BackDiv onClick={this.props.close}>
-              <BackArrow src={require("../../../assets/exit-white.png")} />
-              Back to menu
-            </BackDiv>
-            <ImageGallery images={this.props.donation.imageUrls} />
-          </ImageContainer>
-          <ResponseSection
-            donation={this.props.donation}
-            nextSubmission={this.props.nextSubmission}
-          />
-        </Content>
-      </Background>
-    );
-  }
-}
+const SubmissionFocus = ({ close, donation, nextSubmission }) => {
+  const { height, width } = useWindowDimensions();
+  const [imageIsShrunk, shrinkImage] = useState(false);
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+  return (
+    <Background onClick={close}>
+      <Content
+        className="container"
+        onClick={(e) => e.stopPropagation()}
+        windowHeight={height}
+      >
+        <ImageContainer imageIsShrunk={imageIsShrunk}>
+          <BackDiv onClick={close}>
+            <BackArrow src={require("../../../assets/exit-white.png")} />
+            Back to menu
+          </BackDiv>
+          <ImageGallery images={donation.imageUrls} />
+        </ImageContainer>
+        <ResponseSection
+          donation={donation}
+          nextSubmission={nextSubmission}
+          shrinkImage={shrinkImage}
+        />
+      </Content>
+    </Background>
+  );
+};
 
 export default SubmissionFocus;
 
@@ -77,7 +88,7 @@ const Content = styled.div`
     height: 420px;
   }
   @media (max-width: 850px) {
-    height: 100vh;
+    height: ${(props) => props.windowHeight + "px"};
     flex-direction: column;
   }
 `;
@@ -87,7 +98,9 @@ const ImageContainer = styled.div`
   flex: 1;
   box-shadow: 3px 0px 7px #0000002e;
   position: relative;
+  transition: height 150ms ease-out;
   @media (max-width: 850px) {
-    height: 50%;
+    flex: none;
+    height: ${(props) => (props.imageIsShrunk ? "25%" : "50%")};
   }
 `;

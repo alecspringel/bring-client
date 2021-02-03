@@ -16,6 +16,7 @@ class ResponseSection extends Component {
 
   // Sets the type after one of the buttons is clicked
   setType(yesNoMaybe) {
+    this.props.shrinkImage(true);
     this.setState({
       responseType: yesNoMaybe,
     });
@@ -34,6 +35,7 @@ class ResponseSection extends Component {
               responseType={this.state.responseType}
               nextSubmission={nextSubmission}
               setType={this.setType}
+              shrinkImage={this.props.shrinkImage}
             />
           </Animation2>
         )}

@@ -24,6 +24,7 @@ class SendMessageBtn extends Component {
         function (response) {
           this.props.setType(null);
           this.props.nextSubmission();
+          this.props.shrinkImage(false);
         }.bind(this)
       )
       .catch(function (error) {

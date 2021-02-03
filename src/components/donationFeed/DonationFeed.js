@@ -48,6 +48,11 @@ class DonationFeed extends Component {
   }
 
   focusTile(donation, index) {
+    if (donation) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
     this.setState({
       focusDonation: donation,
       focusIndex: index,

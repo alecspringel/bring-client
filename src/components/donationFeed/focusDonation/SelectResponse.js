@@ -113,6 +113,7 @@ class SelectResponse extends Component {
           message={this.state.message}
           nextSubmission={nextSubmission}
           setType={setType}
+          shrinkImage={this.props.shrinkImage}
         />
       </>
     );
