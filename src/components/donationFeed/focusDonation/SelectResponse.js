@@ -59,33 +59,33 @@ class SelectResponse extends Component {
     return (
       <>
         {responseType === "YES" && (
-          <YesBtn
+          <YesCircle
             className="margin-b10"
             style={{ cursor: "default" }}
             aria-label={"yes"}
           />
         )}
         {responseType === "MAYBE" && (
-          <MaybeBtn
+          <MaybeCircle
             className="margin-b10"
             style={{ cursor: "default" }}
             aria-label={"maybe"}
           />
         )}
         {responseType === "NO" && (
-          <NoBtn
+          <NoCircle
             className="margin-b10"
             style={{ cursor: "default" }}
             aria-label={"no"}
           />
         )}
 
-        <h2 className="text-center">
+        <Title className="text-center">
           {donation.itemName},{" "}
           <span className="text-reg">
             from {donation.first} {donation.last}
           </span>
-        </h2>
+        </Title>
         <Selector
           className="margin-t20"
           options={this.state.options}
@@ -122,6 +122,12 @@ class SelectResponse extends Component {
 
 export default SelectResponse;
 
+const Title = styled.h2`
+  @media (max-height: 500px) {
+    font-size: 1.2em;
+  }
+`;
+
 const DynamicTextArea = styled(TextArea)`
   background: #f5f5f5;
   border: 1px solid #dddddd;
@@ -134,4 +140,25 @@ const DynamicTextArea = styled(TextArea)`
       border: 1px solid #dddddd;
       color: #5c5b5a;
     `}
+`;
+
+const YesCircle = styled(YesBtn)`
+  @media (max-height: 500px) {
+    height: 40px;
+    width: 40px;
+  }
+`;
+
+const MaybeCircle = styled(MaybeBtn)`
+  @media (max-height: 500px) {
+    height: 40px;
+    width: 40px;
+  }
+`;
+
+const NoCircle = styled(NoBtn)`
+  @media (max-height: 500px) {
+    height: 40px;
+    width: 40px;
+  }
 `;

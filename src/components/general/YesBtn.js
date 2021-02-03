@@ -29,7 +29,7 @@ const Container = styled.div`
 `;
 
 const Checkmark = styled.img`
-  height: 30px;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: center;

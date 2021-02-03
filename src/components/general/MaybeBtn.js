@@ -17,11 +17,11 @@ const Container = styled.div`
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: #F9AF42;
+  background-color: #f9af42;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 2px 3px 0px #F9AF4252;
+  box-shadow: 0px 2px 3px 0px #f9af4252;
   transition: all 150ms;
   &:hover {
     background-color: #efa334;
@@ -29,5 +29,5 @@ const Container = styled.div`
 `;
 
 const Checkmark = styled.img`
-  height: 30px;
+  height: 60%;
 `;
