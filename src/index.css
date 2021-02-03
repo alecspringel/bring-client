@@ -140,6 +140,13 @@ a {
   transition: all 100ms;
 }
 
+.primary-outline-btn {
+  border: 2px solid #de472b;
+  background-color: transparent;
+  color: #de472b;
+  transition: all 100ms;
+}
+
 .success-btn {
   background: #5aac44;
   color: #fff;

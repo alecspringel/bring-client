@@ -24,6 +24,7 @@ class Inputs extends Component {
       // Success Modal
       showSuccess: false,
       errors: {},
+      loading: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -32,6 +33,13 @@ class Inputs extends Component {
     this.submitMore = this.submitMore.bind(this);
     this.setError = this.setError.bind(this);
     this.removeFiles = this.removeFiles.bind(this);
+    this.setLoading = this.setLoading.bind(this);
+  }
+
+  setLoading(bool) {
+    this.setState({
+      loading: bool,
+    });
   }
 
   setError(errors) {
@@ -73,16 +81,22 @@ class Inputs extends Component {
         images.push(url);
       });
     }
+
     this.setState({
       files: e.target.files,
       fileUrls: images,
     });
   }
 
-  toggleSuccess() {
-    this.setState({
-      showSuccess: !this.state.showSuccess,
-    });
+  toggleSuccess(submitMore = false) {
+    if (submitMore) {
+      this.submitMore();
+      return;
+    } else {
+      this.setState({
+        showSuccess: !this.state.showSuccess,
+      });
+    }
   }
 
   submitMore() {
@@ -126,6 +140,7 @@ class Inputs extends Component {
               placeholder="First Name"
               aria-label="first name"
               error={this.state.errors.first}
+              loading={this.state.loading}
               required
             />
             <TextInput
@@ -137,6 +152,7 @@ class Inputs extends Component {
               placeholder="Last Name"
               aria-label="last name"
               error={this.state.errors.last}
+              loading={this.state.loading}
               required
             />
             <TextInput
@@ -148,6 +164,7 @@ class Inputs extends Component {
               placeholder="Email"
               aria-label="email"
               error={this.state.errors.email}
+              loading={this.state.loading}
               required
             />
             <TextInput
@@ -159,6 +176,7 @@ class Inputs extends Component {
               placeholder="Phone Number"
               aria-label="phone number"
               error={this.state.errors.phone}
+              loading={this.state.loading}
               maxLength="20"
               required
             />
@@ -192,6 +210,9 @@ class Inputs extends Component {
               </div>
             </CheckboxDiv>
             <SubmitButton
+              outline
+              submitMore
+              label="+ add another item"
               setError={this.setError}
               files={this.state.files}
               first={this.state.first}
@@ -203,7 +224,27 @@ class Inputs extends Component {
               preferEmail={this.state.preferEmail}
               preferPhone={this.state.preferPhone}
               toggleSuccess={this.toggleSuccess}
+              setLoading={this.setLoading}
+              loading={this.state.loading}
             />
+            <SubmitButton
+              label="submit"
+              setError={this.setError}
+              files={this.state.files}
+              first={this.state.first}
+              last={this.state.last}
+              email={this.state.email}
+              phone={this.state.phone}
+              itemName={this.state.itemName}
+              description={this.state.description}
+              preferEmail={this.state.preferEmail}
+              preferPhone={this.state.preferPhone}
+              toggleSuccess={this.toggleSuccess}
+              setLoading={this.setLoading}
+              style={{ marginTop: 10 }}
+              loading={this.state.loading}
+            />
+
             <ErrorDiv errors={this.state.errors} />
           </FormSection>
         </FormWrapper>

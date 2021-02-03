@@ -23,6 +23,9 @@ const PhotoUpload = ({
           name="files"
           multiple
           onChange={handleFiles}
+          onClick={(event) => {
+            event.target.value = null;
+          }}
         />
         {fileUrls && fileUrls.length === 0 ? (
           <div className="text-center">

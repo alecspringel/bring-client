@@ -1,10 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const TextInput = (props) => {
-  return (
-    <Input {...props} />
-  );
+  return <Input {...props} />;
 };
 
 export default TextInput;
@@ -17,7 +15,8 @@ const Input = styled.textarea`
   border-radius: 2px;
   box-shadow: 0px 0px 2px 0px #00000033;
   resize: none;
+  border-radius: 4px;
   &:focus {
     outline-color: #2684ff;
   }
-`
+`;
