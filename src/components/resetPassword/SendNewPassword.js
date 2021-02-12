@@ -34,12 +34,14 @@ const SendNewPassword = ({ form, tokenId, hashedId, setForm }) => {
         })
         .catch((err) => {
           setForm({ ...form, loading: false });
-          setForm({
-            ...form,
-            msg:
-              err.response.data.error ||
-              "There was an issue while resetting your password. Please try again.",
-          });
+          if (err.response) {
+            setForm({
+              ...form,
+              msg:
+                err.response.data.error ||
+                "There was an issue while resetting your password. Please try again.",
+            });
+          }
         });
     }, 1000);
   };

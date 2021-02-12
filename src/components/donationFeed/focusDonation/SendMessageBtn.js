@@ -10,6 +10,9 @@ class SendMessageBtn extends Component {
   }
 
   sendResponse() {
+    if (this.props.message === "Select a reason or choose a custom response") {
+      return;
+    }
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/donations/respond";
     const data = {

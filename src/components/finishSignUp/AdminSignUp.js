@@ -36,6 +36,9 @@ export default AdminSignUp;
 
 const Wrapper = styled.div`
   height: 100vh;
+  @media (max-width: 580px) {
+    flex-direction: column;
+  }
 `;
 
 const ImageDiv = styled.div`

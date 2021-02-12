@@ -4,6 +4,7 @@ import setAuthToken from "../../functions/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { useHistory } from "react-router-dom";
 import { UserDispatchContext } from "../../context/UserProvider";
+import { IsoRounded } from "@material-ui/icons";
 
 const SendLogin = ({ email, password, handleData, loading }) => {
   const setUser = useContext(UserDispatchContext);
@@ -33,8 +34,10 @@ const SendLogin = ({ email, password, handleData, loading }) => {
         })
         .catch((err) => {
           handleData("loading", false);
-          console.log(err.response.data);
-          handleData("errors", err.response.data);
+          if (err.response) {
+            console.log(err.response.data);
+            handleData("errors", err.response.data);
+          }
         });
     }, 1000);
   };

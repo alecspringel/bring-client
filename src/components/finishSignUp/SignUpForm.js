@@ -36,7 +36,9 @@ const SignUpForm = () => {
         history.push("/login");
       })
       .catch((err) => {
-        setErrors({ ...err.response.data });
+        if (err.response) {
+          setErrors({ ...err.response.data });
+        }
       });
   };
   console.log(typeof errors);
@@ -46,6 +48,7 @@ const SignUpForm = () => {
       onSubmit={sendSignUp}
     >
       <TextInput
+        style={{ width: "100%" }}
         name="email"
         placeholder={user && user.email}
         onChange={handleChange}
@@ -56,6 +59,7 @@ const SignUpForm = () => {
         disabled
       />
       <TextInput
+        style={{ width: "100%" }}
         name="first"
         placeholder="First Name"
         className="margin-b10"
@@ -67,6 +71,7 @@ const SignUpForm = () => {
         error={errors && errors.first}
       />
       <TextInput
+        style={{ width: "100%" }}
         name="last"
         placeholder="Last Name"
         className="margin-b10"
@@ -78,6 +83,7 @@ const SignUpForm = () => {
         error={errors && errors.last}
       />
       <TextInput
+        style={{ width: "100%" }}
         name="password"
         placeholder="Password"
         type="password"
@@ -88,6 +94,7 @@ const SignUpForm = () => {
         error={errors && errors.password}
       />
       <TextInput
+        style={{ width: "100%" }}
         name="confirm"
         placeholder="Confirm Password"
         type="password"

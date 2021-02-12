@@ -82,7 +82,9 @@ class SubmitButton extends Component {
         })
         .catch((err) => {
           this.props.setLoading(false);
-          this.props.setError(err.response.data);
+          if (err.response) {
+            this.props.setError(err.response.data);
+          }
         });
     }, 1000);
   }
