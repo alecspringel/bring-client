@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,9 +8,8 @@ import TableFooter from "@material-ui/core/TableFooter";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import { TableHead, Tooltip } from "@material-ui/core";
+import { TableHead } from "@material-ui/core";
 import axios from "axios";
-import styled from "styled-components";
 import TablePaginationActions from "../general/table/TablePaginationActions";
 import DropdownRow from "./DropdownRow";
 import SelectorTextInput from "../general/SelectorTextInput";
@@ -91,6 +89,7 @@ const DonationHistory = () => {
       .catch((err) => {
         console.log(err);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, rowsPerPage, search.search, search.field]);
 
   return (

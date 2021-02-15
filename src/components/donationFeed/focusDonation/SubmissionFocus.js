@@ -5,7 +5,7 @@ import ResponseSection from "./ResponseSection";
 import useWindowDimensions from "../../general/WindowDimensions";
 
 const SubmissionFocus = ({ close, donation, nextSubmission }) => {
-  const { height, width } = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const [imageIsShrunk, shrinkImage] = useState(false);
   useEffect(() => {
     return () => {

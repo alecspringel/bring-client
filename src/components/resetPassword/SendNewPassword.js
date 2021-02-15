@@ -1,8 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { post } from "axios";
-import setAuthToken from "../../functions/setAuthToken";
-import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
 
 const SendNewPassword = ({ form, tokenId, hashedId, setForm }) => {
   const onSubmit = (e) => {

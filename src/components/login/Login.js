@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
 import TextInput from "../general/TextInput";
@@ -14,6 +14,7 @@ const Login = () => {
     if (user) {
       history.push("/admin");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   const [data, setData] = useState({

@@ -34,9 +34,9 @@ export default function useWindowDimensions() {
         setWindowDimensions(getWindowDimensions());
       }
     }
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return windowDimensions;

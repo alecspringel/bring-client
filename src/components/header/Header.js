@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./header.css";
 import Nav from "./Nav";
 import TopHead from "./TopHead";

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 // React router will allow us to create routes within the app that will
 // be rendered client-side
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import setAuthToken from "./functions/setAuthToken";
 import styled from "styled-components";
 import Footer from "./components/footer/Footer";
 import Form from "./components/form/Form";

@@ -87,15 +87,6 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-const Primary = styled.img`
-  object-fit: contain;
-  max-height: 100%;
-  max-width: 100%;
-  z-index: 1;
-  cursor: -webkit-zoom-in;
-  cursor: zoom-in;
-`;
-
 const Overlay = styled.div`
   position: absolute;
   height: 100%;
@@ -115,16 +106,6 @@ const NextArrow = styled.img`
     opacity: 0.6;
   }
   display: ${(props) => (props.show ? "block" : "none")};
-`;
-
-const LeftArrow = styled(NextArrow)`
-  float: left;
-  margin-left: 20px;
-`;
-
-const RightArrow = styled(NextArrow)`
-  float: right;
-  margin-right: 40px;
 `;
 
 const LargeLeftArrow = styled(NextArrow)`

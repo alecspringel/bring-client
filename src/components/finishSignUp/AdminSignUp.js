@@ -20,7 +20,11 @@ const AdminSignUp = () => {
       </ImageDiv>
       <SignupDiv>
         <div className="flex-col justify align text-center">
-          <img src={BringLogo} className="margin-b20" />
+          <img
+            src={BringLogo}
+            className="margin-b20"
+            alt="BRING Recycling logo"
+          />
           <h1>Welcome to the team!</h1>
           <p className="p-large margin-b20 margin-t10">
             Sign up to start approving donations

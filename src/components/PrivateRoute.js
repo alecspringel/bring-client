@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { UserContext, UserDispatchContext } from "../context/UserProvider";
-import AdminSignUp from "./finishSignUp/AdminSignUp";
 
 // We check if the user has a first name to determine if they
 // have completed signing up. If not, render the sign up component

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
-import TableHead from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import TableBody from "@material-ui/core/TableBody";
