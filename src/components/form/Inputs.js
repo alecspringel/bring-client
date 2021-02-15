@@ -53,7 +53,6 @@ class Inputs extends Component {
     this.setState({
       [e.target.name]: e.target.value,
     });
-    console.log(this.state);
   }
 
   // Handles changes from checkbox fields

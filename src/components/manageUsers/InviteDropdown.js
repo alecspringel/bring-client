@@ -17,7 +17,6 @@ const InviteDropdown = ({ users, setUsers }) => {
   const sendInvite = () => {
     const url = process.env.REACT_APP_SERVER_URL;
     const endpoint = "/api/user/invite";
-    console.log(data);
     axios
       .post(url + endpoint, data)
       .then((res) => {

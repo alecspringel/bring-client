@@ -60,7 +60,6 @@ class SubmitButton extends Component {
       formData.append("preferEmail", this.props.preferEmail);
 
       // Add images to form-data
-      console.log(this.props.files);
       Array.from(this.props.files).forEach((file) => {
         formData.append("image", file);
       });

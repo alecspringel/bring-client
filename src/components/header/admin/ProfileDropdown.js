@@ -20,8 +20,6 @@ const ProfileDropdown = () => {
 
   var options = [{ label: "Sign Out", onClick: signOut }];
   if (user && user.isAdmin) {
-    console.log("user is admin");
-
     options.unshift({
       label: "Manage Users",
       onClick: () => history.push("/admin/manage"),

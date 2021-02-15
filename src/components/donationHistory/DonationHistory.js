@@ -77,7 +77,6 @@ const DonationHistory = () => {
         params,
       })
       .then((res) => {
-        console.log(res);
         // If the user is not on first page and searches,
         // user should be returned to first page
         if (search.search !== search.lastSearch) {

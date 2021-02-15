@@ -37,10 +37,7 @@ class DonationFeed extends Component {
     axios
       .get(url + endpoint, { params: sort })
       .then((donations) => {
-        this.setState(
-          { donations: donations.data, loading: false },
-          console.log(donations)
-        );
+        this.setState({ donations: donations.data, loading: false });
       })
       .catch((err) => {
         // Handle request error
@@ -62,20 +59,16 @@ class DonationFeed extends Component {
   nextSubmission() {
     var donations = this.state.donations;
     var focusIndex = null;
-    console.log(this.state);
     donations.splice(this.state.focusIndex, 1);
     // Reached the last in list
     if (this.state.focusIndex !== donations.length + 1) {
       focusIndex = focusIndex + 1;
     }
-    this.setState(
-      {
-        donations,
-        focusIndex,
-        focusDonation: donations[focusIndex],
-      },
-      console.log(this.state)
-    );
+    this.setState({
+      donations,
+      focusIndex,
+      focusDonation: donations[focusIndex],
+    });
   }
 
   render() {

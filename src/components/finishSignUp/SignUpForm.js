@@ -41,7 +41,6 @@ const SignUpForm = () => {
         }
       });
   };
-  console.log(typeof errors);
   return (
     <FormWrapper
       className="flex-col justify align margin-t20"

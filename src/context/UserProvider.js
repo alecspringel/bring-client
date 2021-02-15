@@ -19,14 +19,12 @@ function UserProvider({ children }) {
     if (token) {
       const decoded = jwt_decode(token);
       if (decoded.email) {
-        console.log("User is signed in:", decoded);
         setUserDetails(decoded);
         setAuthToken(token);
       } else {
         setUserDetails(false);
       }
     } else {
-      console.log("User is not signed in");
       setUserDetails(false);
     }
   }, []);
