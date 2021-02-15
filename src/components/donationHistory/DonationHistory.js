@@ -131,7 +131,9 @@ const DonationHistory = () => {
             </TableHead>
             <TableBody>
               {donations &&
-                donations.data.map((row, index) => <DropdownRow row={row} />)}
+                donations.data.map((row) => (
+                  <DropdownRow row={row} key={row._id} />
+                ))}
             </TableBody>
             <TableFooter>
               <TableRow>
@@ -148,6 +150,7 @@ const DonationHistory = () => {
                   onChangePage={setPage}
                   onChangeRowsPerPage={handleChangeRowsPerPage}
                   ActionsComponent={TablePaginationActions}
+                  style={{ overflow: "visible" }}
                 />
               </TableRow>
             </TableFooter>

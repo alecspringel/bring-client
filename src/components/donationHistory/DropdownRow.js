@@ -10,7 +10,7 @@ import ViewIcon from "@material-ui/icons/Visibility";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import IconButton from "@material-ui/core/IconButton";
-import { Tooltip } from "@material-ui/core";
+import { TableHead, Tooltip } from "@material-ui/core";
 import ImageFocus from "../general/ImageFocus";
 
 const DropdownRow = ({ row }) => {
@@ -21,7 +21,7 @@ const DropdownRow = ({ row }) => {
       {viewImages && (
         <ImageFocus images={row.imageUrls} close={() => toggleImages(false)} />
       )}
-      <TableRow key={row.email}>
+      <TableRow key={row._id}>
         <TableCell style={{ minWidth: 30, width: "5%" }}>
           <Tooltip title={isOpen ? "Less" : "More"}>
             <IconButton
@@ -59,19 +59,21 @@ const DropdownRow = ({ row }) => {
           <Collapse in={isOpen} timeout="auto" unmountOnExit>
             <Box margin={1}>
               <p className="p-large text-bold">Description</p>
-              <Typography variant="p" gutterBottom component="div">
+              <Typography variant="body1" gutterBottom component="div">
                 {row.description}
               </Typography>
               <p className="p-large text-bold">Response</p>
-              <Typography variant="p" gutterBottom component="div">
+              <Typography variant="body1" gutterBottom component="div">
                 {row.responseMessage}
               </Typography>
               <Table size="small" aria-label="info">
-                <TableRow>
-                  <TableCell>Submitted Date</TableCell>
-                  <TableCell>Staff Responder</TableCell>
-                  <TableCell>Response Date</TableCell>
-                </TableRow>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Submitted Date</TableCell>
+                    <TableCell>Staff Responder</TableCell>
+                    <TableCell>Response Date</TableCell>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
                   <TableRow key={row._id + "_dropdown"}>
                     <TableCell component="th" scope="row">

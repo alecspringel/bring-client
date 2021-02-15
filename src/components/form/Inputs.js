@@ -140,7 +140,7 @@ class Inputs extends Component {
               placeholder="First Name"
               aria-label="first name"
               error={this.state.errors.first}
-              loading={this.state.loading}
+              loading={this.state.loading ? "true" : undefined}
               required
             />
             <TextInput
@@ -152,7 +152,7 @@ class Inputs extends Component {
               placeholder="Last Name"
               aria-label="last name"
               error={this.state.errors.last}
-              loading={this.state.loading}
+              loading={this.state.loading ? "true" : undefined}
               required
             />
             <TextInput
@@ -164,7 +164,7 @@ class Inputs extends Component {
               placeholder="Email"
               aria-label="email"
               error={this.state.errors.email}
-              loading={this.state.loading}
+              loading={this.state.loading ? "true" : undefined}
               required
             />
             <TextInput
@@ -176,7 +176,7 @@ class Inputs extends Component {
               placeholder="Phone Number"
               aria-label="phone number"
               error={this.state.errors.phone}
-              loading={this.state.loading}
+              loading={this.state.loading ? "true" : undefined}
               maxLength="20"
               required
             />
@@ -225,7 +225,7 @@ class Inputs extends Component {
               preferPhone={this.state.preferPhone}
               toggleSuccess={this.toggleSuccess}
               setLoading={this.setLoading}
-              loading={this.state.loading}
+              loading={this.state.loading ? "true" : undefined}
             />
             <SubmitButton
               label="submit"
@@ -242,7 +242,7 @@ class Inputs extends Component {
               toggleSuccess={this.toggleSuccess}
               setLoading={this.setLoading}
               style={{ marginTop: 10 }}
-              loading={this.state.loading}
+              loading={this.state.loading ? "true" : undefined}
             />
 
             <ErrorDiv errors={this.state.errors} />
