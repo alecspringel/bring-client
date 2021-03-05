@@ -13,6 +13,8 @@ RUN yarn install && yarn build
 
 # nginx state for serving content
 FROM mvpstudio/nginx-static:1
+# Copying in custom configuration file
+COPY --from=builder /app/custom.conf /etc/nginx/conf.d/default.conf
 # Set working directory to nginx asset directory
 WORKDIR ./www
 # Remove default nginx static assets
