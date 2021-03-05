@@ -20,10 +20,16 @@ const ProfileDropdown = () => {
 
   var options = [{ label: "Sign Out", onClick: signOut }];
   if (user && user.isAdmin) {
-    options.unshift({
-      label: "Manage Users",
-      onClick: () => history.push("/admin/manage"),
-    });
+    options.unshift(
+      {
+        label: "Manage Users",
+        onClick: () => history.push("/admin/manage"),
+      },
+      {
+        label: "Manage Responses",
+        onClick: () => history.push("/admin/responses"),
+      }
+    );
   }
 
   return (

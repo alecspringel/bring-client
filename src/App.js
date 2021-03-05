@@ -15,6 +15,7 @@ import AdminSignUp from "./components/finishSignUp/AdminSignUp";
 import ResetLink from "./components/resetLink/ResetLink";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import ManageResponses from "./components/manageResponses/ManageResponses";
 // import { UserContext, UserDispatchContext } from "./context/UserProvider";
 
 class App extends Component {
@@ -38,6 +39,11 @@ class App extends Component {
                 exact
                 path="/admin/manage"
                 component={ManageUsers}
+              />
+              <PrivateRoute
+                exact
+                path="/admin/responses"
+                component={ManageResponses}
               />
               <Route exact path="/admin/signup">
                 <AdminSignUp />
