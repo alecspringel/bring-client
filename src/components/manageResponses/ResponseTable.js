@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-const ResponseTable = () => {
-  const [activeMenu, setMenu] = useState("Yes");
+const ResponseTable = ({ setMenu, activeMenu }) => {
   return (
     <TableWrapper className="flex-row">
       <Sidebar>
-        <MenuItem onClick={() => setMenu("Yes")} active={activeMenu === "Yes"}>
-          Yes
+        <MenuItem
+          onClick={() => setMenu("Accept")}
+          active={activeMenu === "Accept"}
+        >
+          Accept
         </MenuItem>
         <MenuItem
           onClick={() => setMenu("Maybe")}
@@ -15,8 +17,11 @@ const ResponseTable = () => {
         >
           Maybe
         </MenuItem>
-        <MenuItem onClick={() => setMenu("No")} active={activeMenu === "No"}>
-          No
+        <MenuItem
+          onClick={() => setMenu("Decline")}
+          active={activeMenu === "Decline"}
+        >
+          Decline
         </MenuItem>
       </Sidebar>
     </TableWrapper>
@@ -29,7 +34,7 @@ const TableWrapper = styled.section`
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
   border-radius: 4px;
-  min-height: 300px;
+  height: 500px;
 `;
 
 const Sidebar = styled.div`
