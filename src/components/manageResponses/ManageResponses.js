@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../general/Button";
 import ResponseTable from "./ResponseTable";
@@ -11,6 +12,35 @@ const ManageResponses = () => {
     Maybe: [],
     Decline: [],
   });
+
+  // Adds newly created responses to state
+  const addNewResponse = (response) => {
+    let categoryList = responses[response.category];
+    categoryList.unshift(response);
+    setResponses({
+      ...responses,
+      [response.category]: categoryList,
+    });
+    setNewResponse(null);
+  };
+
+  useEffect(() => {
+    const endpoint = "/api/responses";
+    axios
+      .get(process.env.REACT_APP_SERVER_URL + endpoint)
+      .then((res) => {
+        if (res.data && res.data.length > 0) {
+          let categories = { Accept: [], Maybe: [], Decline: [] };
+          res.data.forEach((response) => {
+            categories[response.category].push(response);
+          });
+          setResponses(categories);
+        }
+      })
+      .catch((err) => {
+        // Handle request error
+      });
+  }, []);
 
   // Begins a new response which is in the category of the activeMenu
   const initializeNewResponse = () => {
@@ -32,10 +62,12 @@ const ManageResponses = () => {
         />
       </TopContent>
       <ResponseTable
+        responses={responses}
         setMenu={setMenu}
         activeMenu={activeMenu}
         newResponse={newResponse}
         setNewResponse={setNewResponse}
+        addNewResponse={addNewResponse}
       />
     </div>
   );

@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+import NewResponse from "./NewResponse";
+import Response from "./Response";
 
-const ResponseTable = ({ setMenu, activeMenu }) => {
+const ResponseTable = ({
+  responses,
+  setMenu,
+  activeMenu,
+  newResponse,
+  setNewResponse,
+  addNewResponse,
+}) => {
+  console.log(responses);
   return (
     <TableWrapper className="flex-row">
       <Sidebar>
@@ -24,6 +34,18 @@ const ResponseTable = ({ setMenu, activeMenu }) => {
           Decline
         </MenuItem>
       </Sidebar>
+      <ResponseContent>
+        {newResponse && (
+          <NewResponse
+            activeMenu={activeMenu}
+            setNewResponse={setNewResponse}
+            addNewResponse={addNewResponse}
+          />
+        )}
+        {responses[activeMenu].map((res) => (
+          <Response res={res} />
+        ))}
+      </ResponseContent>
     </TableWrapper>
   );
 };
@@ -73,4 +95,10 @@ const MenuItem = styled.div`
         background-color: #fff;
       }
     `}
+`;
+
+const ResponseContent = styled.div`
+  padding: 20px;
+  width: 100%;
+  overflow: auto;
 `;
