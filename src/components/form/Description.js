@@ -4,32 +4,40 @@ class Description extends Component {
   render() {
     return (
       <div style={{ margin: "20px 0" }}>
-        <h2>Virtual Donations Manager</h2>
+        <h2>Virtual Materials Donation Portal</h2>
         <p className="margin-tb10">
-          Use the form below to send photos of your prospective donation
-          straight to our Receiving Staff. You may upload up to 5 photos per
-          item with a brief description. Our staff will review your submission
-          and confirm if we can accept your items, or if you should seek a
-          different disposal solution. If we cannot accept your materials
+          <span style={{ fontWeight: 500 }}>
+            You can now send photos of your potential materials donation
+            directly to our Receiving Staff!
+          </span>{" "}
+          Use the form below to upload your photos of materials you’d like to
+          donate, including a brief description. Our staff will review your
+          submission and confirm if we can accept your items, or if you should
+          seek a different disposal solution. If we cannot accept your materials
           donation, we will provide you with disposal recommendations.
         </p>
         <p className="margin-tb20">
-          Please be sure to include your contact information (on the right) with
-          photos of your materials.
+          Please include your contact information along with your photo
+          submissions. Only one submission per item or type of item is
+          necessary. You will receive a response within one business day using
+          your preferred contact method. (If you select Email, be sure to check
+          your spam folder if you do not receive a timely response.)
         </p>
         <p className="margin-tb20">
-          Only one submission per item/type of item. Use “+ add another item”
-          button to make multiple submissions with the same contact information.
+          Use the “Add Another Item” button to make multiple submissions with
+          the same contact information.
         </p>
-        <a href="https://bringrecycling.org/things-we-cannot-take/">
-          <p
+        <p href="https://bringrecycling.org/things-we-cannot-take/">
+          <a
             className="text-light text-bold margin-tb20"
             href="https://bringrecycling.org/things-we-cannot-take/"
             style={{ textDecoration: "underline" }}
           >
-            See our list of items we cannot accept
-          </p>
-        </a>
+            Before you submit, see our list of materials we cannot accept.
+          </a>{" "}
+          BRING reserves the right to change the acceptance decision for any
+          reason.
+        </p>
       </div>
     );
   }
