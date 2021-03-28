@@ -12,7 +12,7 @@ const NewResponse = ({ activeMenu, setNewResponse, addNewResponse }) => {
   };
 
   const submitResponse = () => {
-    const endpoint = "/api/responses/create";
+    const endpoint = "/api/responses";
     axios
       .post(process.env.REACT_APP_SERVER_URL + endpoint, {
         category: activeMenu,

@@ -13,6 +13,24 @@ const ManageResponses = () => {
     Decline: [],
   });
 
+  const deleteResponse = (index) => {
+    let responsesCopy = { ...responses };
+    const endpoint = "/api/responses";
+    axios
+      .delete(process.env.REACT_APP_SERVER_URL + endpoint, {
+        data: {
+          _id: responsesCopy[activeMenu][index]._id,
+        },
+      })
+      .then(() => {
+        responsesCopy[activeMenu].splice(index, 1);
+        setResponses(responsesCopy);
+      })
+      .catch((err) => {
+        // Handle request error
+      });
+  };
+
   // Adds newly created responses to state
   const addNewResponse = (response) => {
     let categoryList = responses[response.category];
@@ -68,6 +86,7 @@ const ManageResponses = () => {
         newResponse={newResponse}
         setNewResponse={setNewResponse}
         addNewResponse={addNewResponse}
+        deleteResponse={deleteResponse}
       />
     </div>
   );

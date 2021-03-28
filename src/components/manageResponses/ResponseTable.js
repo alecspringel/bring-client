@@ -10,6 +10,7 @@ const ResponseTable = ({
   newResponse,
   setNewResponse,
   addNewResponse,
+  deleteResponse,
 }) => {
   console.log(responses);
   return (
@@ -42,8 +43,8 @@ const ResponseTable = ({
             addNewResponse={addNewResponse}
           />
         )}
-        {responses[activeMenu].map((res) => (
-          <Response res={res} />
+        {responses[activeMenu].map((res, index) => (
+          <Response res={res} deleteResponse={deleteResponse} index={index} />
         ))}
       </ResponseContent>
     </TableWrapper>

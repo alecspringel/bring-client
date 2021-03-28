@@ -1,10 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import IconButton from "@material-ui/core/IconButton";
+import { Tooltip } from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-const Response = ({ res }) => {
+const Response = ({ res, deleteResponse, index }) => {
   return (
     <Wrapper>
-      <TitleBar>{res.title}</TitleBar>
+      <TitleBar className="flex-row">
+        {res.title}{" "}
+        <div style={{ marginLeft: "auto" }}>
+          <Tooltip title="Delete" style={{ padding: 5 }}>
+            <IconButton
+              aria-label="delete"
+              onClick={() => deleteResponse(index)}
+            >
+              <DeleteIcon style={{ height: 14, width: 14 }} />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </TitleBar>
       <MessageWrapper>{res.message}</MessageWrapper>
     </Wrapper>
   );
