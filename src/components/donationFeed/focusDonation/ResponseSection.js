@@ -36,6 +36,7 @@ class ResponseSection extends Component {
               nextSubmission={nextSubmission}
               setType={this.setType}
               shrinkImage={this.props.shrinkImage}
+              responses={this.props.responses}
             />
           </Animation2>
         )}

@@ -4,7 +4,7 @@ import ImageGallery from "../../general/ImageGallery";
 import ResponseSection from "./ResponseSection";
 import useWindowDimensions from "../../general/WindowDimensions";
 
-const SubmissionFocus = ({ close, donation, nextSubmission }) => {
+const SubmissionFocus = ({ close, donation, nextSubmission, responses }) => {
   const { height } = useWindowDimensions();
   const [imageIsShrunk, shrinkImage] = useState(false);
   useEffect(() => {
@@ -30,6 +30,7 @@ const SubmissionFocus = ({ close, donation, nextSubmission }) => {
           donation={donation}
           nextSubmission={nextSubmission}
           shrinkImage={shrinkImage}
+          responses={responses}
         />
       </Content>
     </Background>

@@ -11,15 +11,15 @@ class YesNoMaybeButtons extends Component {
       <Section animate={animate}>
         <ButtonWrapper className="flex-row">
           <div className="flex-col">
-            <NoBtn onClick={() => setType("NO")} aria-label={"no"} />
+            <NoBtn onClick={() => setType("Decline")} aria-label={"decline"} />
             <Label className="margin-t10">Reject</Label>
           </div>
           <div className="flex-col">
-            <MaybeBtn onClick={() => setType("MAYBE")} aria-label={"maybe"} />
+            <MaybeBtn onClick={() => setType("Maybe")} aria-label={"maybe"} />
             <Label className="margin-t10">Maybe</Label>
           </div>
           <div className="flex-col">
-            <YesBtn onClick={() => setType("YES")} aria-label={"yes"} />
+            <YesBtn onClick={() => setType("Accept")} aria-label={"accept"} />
             <Label className="margin-t10">Accept</Label>
           </div>
         </ButtonWrapper>

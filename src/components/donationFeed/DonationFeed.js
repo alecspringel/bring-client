@@ -16,19 +16,41 @@ class DonationFeed extends Component {
       focusIndex: null,
       loading: true,
       sort: { createdDate: 1 },
+      responses: { accept: [], maybe: [], decline: [] },
     };
     this.fetchPendingDonations = this.fetchPendingDonations.bind(this);
     this.focusTile = this.focusTile.bind(this);
     this.nextSubmission = this.nextSubmission.bind(this);
     this.sort = this.sort.bind(this);
+    this.fetchResponses = this.fetchResponses.bind(this);
   }
 
   componentDidMount() {
     this.fetchPendingDonations();
+    this.fetchResponses();
   }
 
   sort(option) {
     this.fetchPendingDonations(option.value);
+  }
+
+  fetchResponses() {
+    const endpoint = "/api/responses";
+    axios
+      .get(process.env.REACT_APP_SERVER_URL + endpoint)
+      .then((res) => {
+        if (res.data && res.data.length > 0) {
+          let categories = { Accept: [], Maybe: [], Decline: [] };
+          res.data.forEach((response) => {
+            const option = { label: response.title, value: response.message };
+            categories[response.category].push(option);
+          });
+          this.setState({ responses: categories });
+        }
+      })
+      .catch((err) => {
+        // Handle request error
+      });
   }
 
   fetchPendingDonations(sort) {
@@ -80,6 +102,7 @@ class DonationFeed extends Component {
               donation={this.state.focusDonation}
               close={() => this.focusTile(null)}
               nextSubmission={this.nextSubmission}
+              responses={this.state.responses}
             />
           )}
           <FeedOptions sort={this.sort} />
