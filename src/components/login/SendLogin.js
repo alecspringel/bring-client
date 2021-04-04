@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { post } from "axios";
-import setAuthToken from "../../functions/setAuthToken";
+import setAuthToken from "../../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { UserDispatchContext } from "../../context/UserProvider";
 

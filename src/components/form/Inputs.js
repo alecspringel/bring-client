@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import resizeImgs from "../../utils/resizeImgs";
 import Checkbox from "../general/Checkbox";
 import ErrorDiv from "../general/ErrorDiv";
 import TextInput from "../general/TextInput";
@@ -72,18 +73,12 @@ class Inputs extends Component {
     });
   }
 
-  handleFiles(e) {
-    var images = [];
-    if (e.target.files) {
-      Array.from(e.target.files).forEach((file) => {
-        const url = URL.createObjectURL(file);
-        images.push(url);
-      });
-    }
-
+  async handleFiles(e) {
+    const { imageUrls, resizedFiles } = await resizeImgs(e.target.files);
+    console.log("setstate");
     this.setState({
-      files: e.target.files,
-      fileUrls: images,
+      files: resizedFiles,
+      fileUrls: imageUrls,
     });
   }
 

@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import jwt_decode from "jwt-decode";
-import setAuthToken from "../functions/setAuthToken";
+import setAuthToken from "../utils/setAuthToken";
 const UserContext = createContext(undefined);
 const UserDispatchContext = createContext(undefined);
 
